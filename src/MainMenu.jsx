@@ -26,40 +26,33 @@ const MainMenu = (props) => {
   };
 
   return (
-    <div style={{border: 'solid #fafafa 1px', backgroundColor: '#001528', height: '500px', width: '700px', padding: '5px', borderRadius: '10px'}}>
-      <div style={{border: 'dashed #1776ff 3px', backgroundColor: '#001528', height: '488px', width: '688px', padding: '5px', borderRadius: '10px'}}>
+    <div style={{backgroundColor: '#001528', height: '867px', width: '1157px', padding: '5px', borderRadius: '10px', border: '1px solid #fafafa'}}>
+      <div style={{border: 'dashed #1776ff 3px', height: '855px', width: '1145px', padding: '5px', borderRadius: '10px'}}>
         <div style={{backgroundColor: '#001528', height: '476px', width: '676px', paddingTop: '5px', borderRadius: '10px'}}>
-          <div style={{fontSize: '75px', color: '#1776ff', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginTop: '20px'}}>
+          <div style={{fontSize: '125px', color: '#1776ff', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginTop: '65px', marginLeft: '450px'}}>
             Melody
           </div>
-          <div style={{fontSize: '75px', color: '#1776ff', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginTop: '-13px'}}>
+          <div style={{fontSize: '125px', color: '#1776ff', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginTop: '-13px', marginLeft: '450px'}}>
             Mastermind!
           </div>
-          <div style={{fontSize: '75px', color: '#fafafa', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginTop: '-160px', marginLeft: '7px'}}>
+          <div style={{fontSize: '125px', color: '#fafafa', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginLeft: '460px', marginTop: '-278px'}}>
             Melody
           </div>
-          <div style={{fontSize: '75px', color: '#fafafa', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginTop: '-14px', marginLeft: '7px'}}>
+          <div style={{fontSize: '125px', color: '#fafafa', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginLeft: '460px', marginTop: '-13px'}}>
             Mastermind!
           </div>
-          <img src={correctLeftHalf} alt="" style={{position: 'absolute', top: '170px', left: '461px', height: '300px', width: '300px'}}/>
-
-          <div style={{height: '300px', width: '300px', overflow: 'hidden'}}>
-            <img src={incorrectRightHalf} alt="" style={{position: 'absolute', top: '170px', left: '15px'}}/>
+            <img src={correctLeftHalf} alt="" style={{position: 'absolute', top: '325px', left: '768px', height: '500px', width: '500px'}}/>
+          <div style={{height: '500px', width: '250px'}}>
+            <img src={incorrectRightHalf} alt="" style={{position: 'absolute', top: '325px', height: '500px', width: '250px'}}/>
           </div>
-          <div style={{marginTop: '-275px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center'}}>
-            <img className='mainMenuButton' src={musicalNote2} alt="" style={{height: '40px', width: '40px', position: 'absolute', top: '255px', left: '185px', display: 'none'}}/>
-            <Button className='mainMenuButton' type="primary" style={{width: '306px', height: '50px', fontSize: '24px', marginLeft: '-5px', marginBottom: '10px'}} onClick={(e) => {goToNewGameMenu(e)}}>New Game</Button>
-            <img className='mainMenuButton' src={musicalNote2} alt="" style={{height: '40px', width: '40px', position: 'absolute', top: '260px', left: '475px', display: 'none'}}/>
+          <div style={{marginTop: '-425px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', marginRight: '-100px'}}>
+            <Button className='mainMenuButton' type="primary" style={{width: '400px', height: '75px', fontSize: '28px', marginLeft: '350px', marginBottom: '15px'}} onClick={(e) => {goToNewGameMenu(e)}}>New Game</Button>
           </div>
-          <div style={{marginTop: '15px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginLeft: '-5px'}}>
-            <img  className='mainMenuButton' src={musicalNote1} alt="" style={{height: '38px', width: '38px', position: 'absolute', top: '325px', left: '185px', display: 'none'}}/>
-            <Button  className='mainMenuButton' type="dashed" style={{width: '306px', height: '50px', fontSize: '24px', color: '#001258', marginBottom: '10px'}}>How to Play</Button>
-            <img  className='mainMenuButton' src={musicalNote1} alt="" style={{height: '38px', width: '38px', position: 'absolute', top: '325px', left: '475px', display: 'none'}}/>
+          <div style={{marginTop: '20px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginRight: '-100px'}}>
+            <Button  className='mainMenuButton' type="dashed" style={{width: '400px', height: '75px', fontSize: '28px', color: '#001258', marginLeft: '350px', marginBottom: '15px'}}>How to Play</Button>
           </div>
-          <div style={{marginTop: '15px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginLeft: '-5px'}}>
-            <img  className='mainMenuButton' src={musicalNote2} alt="" style={{height: '40px', width: '40px', position: 'absolute', top: '385px', left: '185px', display: 'none'}}/>
-            <Button  className='mainMenuButton' type="dashed" style={{width: '306px', height: '50px', fontSize: '24px', color: '#001258'}} onClick={(e) => {goToLeaderboard(e)}}>Leaderboard</Button>
-            <img  className='mainMenuButton' src={musicalNote2} alt="" style={{height: '40px', width: '40px', position: 'absolute', top: '385px', left: '475px', display: 'none'}}/>
+          <div style={{marginTop: '20px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginLeft: '-5px', marginRight: '-100px'}}>
+            <Button  className='mainMenuButton' type="dashed" style={{width: '400px', height: '75px', fontSize: '28px', marginLeft: '350px', color: '#001258'}} onClick={(e) => {goToLeaderboard(e)}}>Leaderboard</Button>
           </div>
         </div>
         </div>

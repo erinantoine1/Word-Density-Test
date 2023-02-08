@@ -6,6 +6,10 @@ import partial from '../public/icons/neutral.svg';
 import incorrect from '../public/icons/frown2.svg';
 import correctLeftHalf from '../public/icons/correctLeftHalf.svg';
 import incorrectRightHalf from '../public/icons/incorrectRightHalf.svg';
+import { LaptopOutlined, AudioOutlined, UserOutlined } from '@ant-design/icons';
+import music from '../public/icons/musicalNote2.svg';
+import {Tag} from 'antd';
+import blackNote from '../public/icons/blackNote.svg';
 
 const GameOver = (props) => {
 
@@ -37,76 +41,92 @@ const GameOver = (props) => {
     )};
 
   return (
-    <div style={{border: 'solid #fafafa 1px', backgroundColor: '#001528', height: '500px', width: '700px', padding: '5px', borderRadius: '10px'}}>
-      <div style={{border: 'dashed #1776ff 3px', backgroundColor: '#001528', height: '488px', width: '688px', padding: '5px', borderRadius: '10px'}}>
-        <div style={{backgroundColor: '#001528', height: '476px', width: '676px', paddingTop: '5px', borderRadius: '10px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', color: '#fafafa', width: '100%'}}>
-      <div style={{fontSize: '60px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', width: '100%', color: '#1776ff'}}>
-        Game Over
-      </div>
-      <div style={{fontSize: '22px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', width: '100%', marginTop: '-10px', marginBottom: '-10px'}}>
-        {props.currentGameSettings.difficulty} | {props.currentGameSettings.genre} | {props.currentGameSettings.songNum} Songs
-      </div>
-      <div style={{display: 'inline-flex', marginTop: '0px'}}>
-      <div style={{fontSize: '60px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', width: '100%', marginRight: '-200px'}}>
-        <div style={{color: '#1776ff', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', width: '100%', marginBottom: '-15px'}}>
+    <div style={{backgroundColor: '#001528', height: '867px', width: '1157px', padding: '5px', borderRadius: '10px', border: '1px solid #fafafa', color: '#fafafa'}}>
+    <div style={{border: 'dashed #1776ff 3px', height: '855px', width: '1145px', padding: '5px', borderRadius: '10px'}}>
+        <div style={{fontSize: '125px', color: '#1776ff', width: '100%', display: 'flex', justifyContent: 'center'}}>
+          Game Over
+        </div>
+          <img src={correctLeftHalf} alt="" style={{position: 'absolute', top: '325px', left: '768px', height: '500px', width: '500px'}}/>
+        <div style={{height: '500px', width: '250px'}}>
+          <img src={incorrectRightHalf} alt="" style={{position: 'absolute', top: '325px', height: '500px', width: '250px'}}/>
+        </div>
+                  <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', marginTop: '-485px'}}>
+                    <div>
+                      <img src={props.completedAlbumArt} alt="" style={{height: '175px', width: '175px', border: 'solid #fafafa 1px', borderRadius: '10px'}}/>
+                    </div>
+                    <div>
+                      <div style={props.completedTitle ? {margin: '10px', width: '100%', display: 'flex', justifyContent: 'flex-start', marginLeft: '20px', fontSize: '24px'} : {display: 'none'}}>
+                        <AudioOutlined style={{color: '#1776ff', marginRight: '15px'}}/>  {props.completedTitle}
+                      </div>
+                      <div style={props.completedArtist ? {margin: '10px', width: '100%', display: 'flex', justifyContent: 'flex-start', marginLeft: '20px', fontSize: '24px'} : {display: 'none'}}>
+                        <UserOutlined style={{color: '#1776ff', marginRight: '15px'}}/>  {props.completedArtist}
+                      </div>
+                    </div>
+                  </div>
+      <div style={{display: 'inline-flex', marginTop: '30px', marginLeft: '270px'}}>
+      <div style={{fontSize: '60px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginRight: '-25px'}}>
+        <div style={{color: '#1776ff', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginBottom: '-10px', marginRight: '-70px', marginLeft: '0px', marginTop: '0px'}}>
           {props.finalTime}
         </div>
-        <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', width: '100%', fontSize: '22px', marginBottom: '18px'}}>
-          Avg: 30s
+        <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', fontSize: '24px', marginBottom: '20px', width: '100%', paddingLeft: '80px'}}>
+          Avg: {props.avgTime} s
         </div>
-        <div style={{width: '100%'}}>
-          <div style={{height: '0px', width: '160px', border: '#1776ff 2px dashed', marginLeft: '190px', marginTop: '-8px'}}></div>
+        <div style={{position: 'absolute', top: '500px', left: '414px'}}>
+          <Tag color="#38b6ff" style={{ color: '#001528', fontSize: '14px'}}><b>{props.currentGameSettings.songNum}<img src={blackNote}style={{height: '10px', width: '10px'}}/></b></Tag>
+          <Tag color="#1776ff" style={{ color: '#001528', fontSize: '14px', marginTop: '5px'}}><b>{props.currentGameSettings.difficulty}</b></Tag>
+          <Tag color="#554cff" style={{ color: '#001528', fontSize: '14px', marginTop: '5px'}}><b>{props.currentGameSettings.genre}</b></Tag>
         </div>
-      <div style={{display: 'inline-flex', alignItems: 'center', marginLeft: '40px', marginTop: '-15px'}}>
+        {/* </div>
+        </div> */}
+
+      <div style={{display: 'inline-flex', alignItems: 'center', marginLeft: '20px', marginTop: '-15px'}}>
         <div>
-        <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', width: '100%', fontSize: '22px', marginTop: '10px'}}>
+        <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', width: '100%', fontSize: '24px', marginTop: '10px'}}>
           Your
         </div>
-        <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', width: '100%', fontSize: '22px', marginRight: '30px'}}>
+        <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', width: '100%', fontSize: '24px'}}>
           Score:
         </div>
       </div>
-      <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', width: '100%', fontSize: '60px', color: '#fafafa', marginRight: '50px' , marginTop: '5px'}}>
-        {props.currentScore} <div style={{color: '#fafafa', fontSize: '22px', display: 'inline-flex', alignItems: 'flex-end', marginBottom: '8px', marginLeft: '5px'}}>Pts</div>
+      <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', width: '100%', fontSize: '60px', color: '#fafafa', marginLeft: '15px', marginTop: '10px', marginRight: '-65px'}}>
+        {props.currentScore}
+      <div style={{color: '#fafafa', fontSize: '24px', display: 'inline-flex', alignItems: 'flex-end', marginBottom: '8px', marginLeft: '5px'}}>Pts</div>
       </div>
       </div>
       </div>
-      <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginRight: '115px', marginBottom: '0px'}} >
-        <div style={{display: 'flex', flexWrap: 'wrap', fontSize: '60px', width: '60%', marginBottom: '-15px'}}>
-          <img src={correct} alt="" style={{marginRight: '5px'}}/>
+      <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginLeft: '-70px', alignItems: 'center'}} >
+        <div style={{display: 'flex', flexWrap: 'wrap', fontSize: '60px', width: '60%', marginBottom: '5px', alignItems: 'center'}}>
+          <img src={correct} alt="" style={{marginRight: '10px', height: '75px', width:' 75px'}}/>
           {props.numCorrect}
         </div>
-        <div style={{display: 'flex', flexWrap: 'wrap', fontSize: '60px', width: '60%', marginBottom: '-15px'}}>
-          <img src={partial} alt="" style={{marginRight: '5px'}}/>
+        <div style={{display: 'flex', flexWrap: 'wrap', fontSize: '60px', width: '60%', marginBottom: '5px', alignItems: 'center'}}>
+          <img src={partial} alt="" style={{marginRight: '10px', height: '75px', width:' 75px'}}/>
           {props.numPartiallyCorrect}
         </div>
-        <div style={{display: 'flex', flexWrap: 'wrap', fontSize: '60px', width: '60%', marginBottom: '-5px'}}>
-          <img src={incorrect} alt="" style={{marginRight: '5px'}}/>
+        <div style={{display: 'flex', flexWrap: 'wrap', fontSize: '60px', width: '60%', marginBottom: '5px', alignItems: 'center'}}>
+          <img src={incorrect} alt="" style={{marginRight: '10px', height: '75px', width:' 75px'}}/>
           {props.numIncorrect}
         </div>
       </div>
       </div>
 
 
-      <div style={{fontSize: '22px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', width: '100%', marginTop: '10px', marginLeft: '3px'}}>
-        <Button style={{width: '306px', height: '50px', fontSize: '22px'}}
+      <div style={{fontSize: '24px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', width: '100%'}}>
+        <Button style={{width: '400px', height: '75px', fontSize: '28px', marginTop: '30px'}}
           onClick={(e) => {
-            props.addToDb(e)
+            props.goToLeaderboard(e)
           }}
           type="dashed">
             Leaderboard
         </Button>
       </div>
-      <div style={{fontSize: '22px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', width: '100%', marginBottom: '10px'}}>
-        <Button style={{width: '306px', height: '50px', fontSize: '22px'}}
+      <div style={{fontSize: '24px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', width: '100%', marginTop: '30px'}}>
+        <Button style={{width: '400px', height: '75px', fontSize: '28px'}}
           type="primary"
           onClick={(e) => {goToMainMenu(e)}}>
             Main Menu
         </Button>
       </div>
-      <img src={correctLeftHalf} alt="" style={{position: 'absolute', top: '170px', left: '461px', height: '300px', width: '300px'}}/>
-      <img src={incorrectRightHalf} alt="" style={{position: 'absolute', top: '170px', left: '15px'}}/>
-    </div>
     </div>
     </div>
   );

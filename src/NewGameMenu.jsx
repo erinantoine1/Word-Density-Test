@@ -40,54 +40,59 @@ const NewGameMenu = (props) => {
   }
 
   return (
-    <div style={{border: 'solid #fafafa 1px', backgroundColor: '#001528', height: '500px', width: '700px', padding: '5px', borderRadius: '10px'}}>
-      <div style={{border: 'dashed #1776ff 3px', height: '488px', width: '688px', padding: '5px', borderRadius: '10px'}}>
-        <div style={{display: 'inline-flex', justifyContent: 'space-between', width: '100%', padding: '10px'}}>
-            <Button style={{fontSize: '40px', backgroundColor: '#001528', borderRadius: '50%', height: '40px', width: '40px'}} onClick={(e) => {goToMainMenu(e)}}><LeftCircleOutlined style={{fontSize: '40px', color: '#fafafa', borderRadius: '50%', height: '40px', width: '40px', marginLeft: '-15px', marginTop: '-5px'}}/></Button>
-            <Tooltip title="How to Play" placement='right' color='red' key='red'>
-              <InfoCircleOutlined style={{fontSize: '40px', color: '#fafafa'}}/>
-            </Tooltip>
-          </div>
-        <div style={{height: '476px', width: '676px', borderRadius: '10px', marginTop: '-10px'}}>
-          <div style={{ fontSize: '60px', color: '#fafafa', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginLeft: '-10', marginTop: '-55px', color: '#1776ff'}}>Settings</div>
-          <img src={correctLeftHalf} alt="" style={{position: 'absolute', top: '170px', left: '461px', height: '300px', width: '300px'}}/>
-
-          <div style={{height: '300px', width: '300px', overflow: 'hidden'}}>
-            <img src={incorrectRightHalf} alt="" style={{position: 'absolute', top: '170px', left: '15px'}}/>
-          </div>
-          <div style={{marginTop: '-285px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', color: '#fafafa', marginLeft: '-5px'}}>
+    <div style={{backgroundColor: '#001528', height: '867px', width: '1157px', padding: '5px', borderRadius: '10px', border: '1px solid #fafafa'}}>
+    <div style={{border: 'dashed #1776ff 3px', height: '855px', width: '1145px', padding: '5px', borderRadius: '10px'}}>
+    <div style={{display: 'inline-flex', justifyContent: 'space-between', width: '100%', padding: '10px'}}>
+          <Button style={{fontSize: '40px', backgroundColor: '#001528', borderRadius: '50%', height: '50px', width: '50px'}} onClick={(e) => {goToMainMenu(e)}}>
+            <LeftCircleOutlined style={{fontSize: '50px', color: '#fafafa', borderRadius: '50%', height: '50px', width: '50px', marginLeft: '-15px', marginTop: '-5px'}}/>
+          </Button>
+          <Tooltip title="How to Play" placement='right' color='red' key='red'>
+            <InfoCircleOutlined style={{fontSize: '50px', color: '#fafafa'}}/>
+          </Tooltip>
+        </div>
+      <div style={{height: '476px', width: '676px', paddingTop: '5px', borderRadius: '10px', marginTop: '-145px'}}>
+        <div style={{fontSize: '125px', color: '#1776ff', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginTop: '85px', marginLeft: '435px'}}>
+          Settings
+        </div>
+        {/* <div style={{fontSize: '125px', color: '#fafafa', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginLeft: '460px', marginTop: '-143px'}}>
+          Settings
+        </div> */}
+        <img src={correctLeftHalf} alt="" style={{position: 'absolute', top: '325px', left: '768px', height: '500px', width: '500px'}}/>
+        <div style={{height: '500px', width: '250px'}}>
+          <img src={incorrectRightHalf} alt="" style={{position: 'absolute', top: '325px', height: '500px', width: '250px'}}/>
+        </div>
+          <div style={{marginTop: '-200px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', color: '#fafafa', marginLeft: '-5px'}}>
             <form>
-            <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'center', backgroundColor: '#001528', width: '306px', padding: '2px', paddingTop: '9px',borderRadius: '10px', border: 'solid #fafafa 2px', fontSize: '14px', marginBottom: '20px'}}>
-            <span style={{position: 'absolute', top: '95px', left: '210px', backgroundColor: '#001528', paddingLeft: '4px', paddingRight: '4px', color: '#fafafa'}}>Name</span>
-        <Input type='text' showCount maxLength={20} size="large" value={nameInput} style={{width: '300px', height: '40px', fontSize: '22px', color: '#001528'}} border="true" onChange={(e) => {setNameInput(e.target.value)}}/>
+            <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'center', width: '400px', paddingTop: '9px',borderRadius: '10px', border: 'solid #fafafa 2px', fontSize: '14px', marginLeft: '250px', height: '75px', marginLeft: '450px', marginTop: '-250px'}}>
+            <span style={{position: 'absolute', top: '195px', left: '375px', paddingLeft: '4px', paddingRight: '4px', color: '#fafafa', fontSize: '24px'}}>Name:</span>
+        <Input type='text' showCount maxLength={20} value={nameInput} style={{width: '392px', height: '68px', fontSize: '24px', color: '#001528', marginTop: '-9px'}} border="true" onChange={(e) => {setNameInput(e.target.value)}}/>
       </div>
-      <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'center', backgroundColor: '#001528', width: '306px', padding: '2px', paddingTop: '9px', borderRadius: '10px', border: 'solid #fafafa 2px', fontSize: '14px', marginBottom: '15px', marginTop: '15px'}}>
-        <span style={{position: 'absolute', top: '170px', left: '210px', backgroundColor: '#001528', paddingLeft: '4px', paddingRight: '4px'}}>Genre</span>
-         <Radio.Group value={genreInput} onChange={(e) => {setGenreInput(e.target.value)}} style={{border: '1px solid #fafafa', borderRadius: '7px', width: '306px', color: '#001528'}}>
-           <Radio.Button value="Random" style={{fontSize: '22px', width: '33.3%', height: '40px', paddingTop: '3px', paddingLeft: '10px'}}>Random</Radio.Button>
-           <Radio.Button value="Pop" style={{fontSize: '22px', width: '33.3%', height: '40px', paddingTop: '3px', paddingLeft: '28px'}}>Pop</Radio.Button>
-           <Radio.Button value="Alt/Rock" style={{fontSize: '22px', width: '33.3%', height: '40px', paddingTop: '3px', paddingLeft: '10px'}}>Alt/Rock</Radio.Button>
+      <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'center', width: '400px', padding: '2px', paddingTop: '9px', borderRadius: '10px', border: 'solid #fafafa 2px', fontSize: '14px', marginBottom: '25px', marginTop: '35px', marginLeft: '450px', height: '75px'}}>
+        <span style={{position: 'absolute', top: '305px', left: '375px', paddingLeft: '4px', paddingRight: '4px', fontSize: '24px', marginBottom: '5px'}}># of Songs:</span>
+         <Radio.Group value={songNumInput} onChange={(e) => {setSongNumInput(e.target.value)}} style={{border: '1px solid #fafafa', borderRadius: '7px', width: '400px', color: '#001528', marginTop: '-7px'}}>
+          <Radio.Button value="10" style={{fontSize: '28px', height: '65px', paddingTop: '15px', width: '33.3%', paddingLeft: '45px'}}>10</Radio.Button>
+           <Radio.Button value="20" style={{fontSize: '28px', height: '65px', paddingTop: '15px', width: '33.3%', paddingLeft: '45px'}}>20</Radio.Button>
+           <Radio.Button value="30" style={{fontSize: '28px', height: '65px', paddingTop: '15px', width: '33.3%', paddingLeft: '45px'}}>30</Radio.Button>
          </Radio.Group>
        </div>
-          <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'center', backgroundColor: '#001528', width: '306px', padding: '2px', paddingTop: '9px',borderRadius: '10px', border: 'solid #fafafa 2px', fontSize: '14px', marginTop: '20px'}}>
-          <span style={{position: 'absolute', top: '248px', left: '210px', backgroundColor: '#001528', paddingLeft: '4px', paddingRight: '4px'}}>Difficulty</span>
-           <Radio.Group value={difficultyInput} onChange={(e) => {setDifficultyInput(e.target.value)}} style={{border: '1px solid #fafafa', borderRadius: '7px', justifyContent: 'center', width: '303px', color: '#001528'}}>
-           <Radio.Button value="Easy"  style={{fontSize: '22px', height: '40px', width: '33.3%', paddingTop: '3px', paddingLeft: '23px'}}>Easy</Radio.Button>
-           <Radio.Button value="Medium" style={{fontSize: '22px', width: '33.3%', height: '40px', paddingTop: '3px', paddingLeft: '10px'}}>Medium</Radio.Button>
-           <Radio.Button value="Hard" style={{fontSize: '22px', width: '33.3%', height: '40px', paddingTop: '3px', paddingLeft: '23px'}}>Hard</Radio.Button>
+       <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'center', width: '400px', padding: '2px', paddingTop: '9px', borderRadius: '10px', border: 'solid #fafafa 2px', fontSize: '14px', marginBottom: '15px', marginTop: '35px', marginLeft: '450px', height: '75px'}}>
+        <span style={{position: 'absolute', top: '415px', left: '375px', paddingLeft: '4px', paddingRight: '4px', fontSize: '24px'}}>Difficulty:</span>
+         <Radio.Group value={difficultyInput} onChange={(e) => {setDifficultyInput(e.target.value)}} style={{border: '1px solid #fafafa', borderRadius: '7px', width: '400px', color: '#001528', marginTop: '-7px'}}>
+          <Radio.Button value="Easy"  style={{fontSize: '28px', height: '65px', width: '33.3%', paddingTop: '15px', paddingLeft: '35px'}}>Easy</Radio.Button>
+           <Radio.Button value="Medium" style={{fontSize: '28px', width: '33.3%', height: '65px', paddingTop: '15px', paddingLeft: '15px'}}>Medium</Radio.Button>
+           <Radio.Button value="Hard" style={{fontSize: '28px', width: '33.3%', height: '65px', paddingTop: '15px', paddingLeft: '35px'}}>Hard</Radio.Button>
          </Radio.Group>
        </div>
-
-       <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'center', backgroundColor: '#001528', width: '306px', borderRadius: '10px', border: 'solid #fafafa 2px', fontSize: '14px', marginTop: '20px', fontSize: '14px', padding: '2px', paddingTop: '9px'}}>
-       <span style={{position: 'absolute', top: '325px', left: '210px', backgroundColor: '#001528', paddingLeft: '4px', paddingRight: '4px'}}># of Songs</span>
-         <Radio.Group value={songNumInput} onChange={(e) => {setSongNumInput(e.target.value)}} style={{border: '1px solid #fafafa', borderRadius: '7px', width: '303px', color: '#001528'}}>
-           <Radio.Button value="10" style={{fontSize: '22px', height: '40px', paddingTop: '3px', width: '33.3%', paddingLeft: '33px'}}>10</Radio.Button>
-           <Radio.Button value="20" style={{fontSize: '22px', height: '40px', paddingTop: '3px', width: '33.3%', paddingLeft: '33px'}}>20</Radio.Button>
-           <Radio.Button value="30" style={{fontSize: '22px', height: '40px', paddingTop: '3px', width: '33.3%', paddingLeft: '33px'}}>30</Radio.Button>
+      <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'center', width: '400px', padding: '2px', paddingTop: '9px', borderRadius: '10px', border: 'solid #fafafa 2px', fontSize: '14px', marginBottom: '15px', marginTop: '35px', marginLeft: '450px', height: '75px'}}>
+        <span style={{position: 'absolute', top: '525px', left: '375', paddingLeft: '4px', paddingRight: '4px', fontSize: '24px'}}>Genre:</span>
+         <Radio.Group value={genreInput} onChange={(e) => {setGenreInput(e.target.value)}} style={{border: '1px solid #fafafa', borderRadius: '7px', width: '400px', color: '#001528', marginTop: '-7px'}}>
+           <Radio.Button value="Random" style={{fontSize: '28px', width: '33.3%', height: '65px', paddingTop: '14px', paddingLeft: '14px'}}>Random</Radio.Button>
+           <Radio.Button value="Pop" style={{fontSize: '28px', width: '33.3%', height: '65px', paddingTop: '14px', paddingLeft: '40px'}}>Pop</Radio.Button>
+           <Radio.Button value="Alt/Rock" style={{fontSize: '28px', width: '33.3%', height: '65px', paddingTop: '14px', paddingLeft: '14px'}}>Alt/Rock</Radio.Button>
          </Radio.Group>
        </div>
-       <div style={{position: 'absolute', marginTop: '20px'}}>
-         <Button type="primary" onClick={(e) => {submitCurrentSettings(e)}} style={{width: '306px', height: '50px', fontSize: '22px'}} >Start Game!</Button>
+       <div style={{position: 'absolute', marginTop: '75px'}}>
+         <Button type="primary" onClick={(e) => {submitCurrentSettings(e)}} style={{width: '400px', height: '75px', fontSize: '28px', marginLeft: '450px'}} >Start Game!</Button>
        </div>
             </form>
           </div>

@@ -25,31 +25,20 @@ let save = (entry) => {
 
 const getAllByGenreDifficultySongNum = (genreValue, difficultyValue, songNumValue) => {
 
+  if (genreValue === 'All Genres') {
+    genreValue = undefined;
+  }
 
-  console.log('Genre: ', genreValue);
-  console.log('Difficulty: ', difficultyValue);
-  console.log('SongNum: ', songNumValue);
-  // let genreDbValue, difficultyDbValue, songNumDbValue;
+  if (difficultyValue === 'All Difficulties') {
+    difficultyValue = undefined;
+  }
 
-  // if (genreValue === undefined) {
-  //   genreDbValue = `${{$in:[ 'Random', 'Pop', 'Rock' ]}}`
-  // }
+  if (songNumValue === 'All # of Songs') {
+    songNumValue = undefined;
+  } else {
+    songNumValue = songNumValue;
+  }
 
-  // if (difficultyValue === undefined) {
-  //   difficultyDbValue = `${{$in:[ 'Easy', 'Medium', 'Hard' ]}}`
-  // }
-
-  // if (songNumValue === undefined) {
-  //   songNumDbValue = `${{$in:[ 10, 20, 30]}}`
-  // }
-
-  // console.log('Genre: ', genreDbValue);
-  // console.log('Difficulty: ', difficultyDbValue);
-  // console.log('SongNum: ', songNumDbValue);
-
-
-
-  //return Entry.find({genre: genreValue, difficulty: difficultyValue, songNum: Number(songNumValue)});
 
   if (genreValue === undefined && difficultyValue === undefined && songNumValue === undefined) {
     return Entry.find({genre: {$in:[ 'Random', 'Pop', 'Rock' ]}, difficulty: {$in:[ 'Easy', 'Medium', 'Hard' ]}, songNum: {$in:[ 10, 20, 30 ]}});

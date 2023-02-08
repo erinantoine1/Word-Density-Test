@@ -13,29 +13,29 @@ const Song = (props) => {
   const [guessDisabled, setGuessDisabled] = useState(true);
   const [songStartedMessage, setSongStartedMessage] = useState(["Let's get started!", "Here we go!", "Let's do this!"]);
   const [partiallyCorrectMessage, setPartiallyCorrectMessage] = useState([
-    `Almost there, ${props.currentGameSettings.name}! Any other guesses?`,
-    `Sorta. Give it another shot, ${props.currentGameSettings.name}!`,
-    `You can do it, ${props.currentGameSettings.name}! Guess again.`
+    `Almost there! Other guesses?`,
+    `Sorta. Give it another shot!`,
+    `You can do it! Guess again.`
   ]);
   const [onePointMessage, setOnePointMessage] = useState([
-    `You were super close, ${props.currentGameSettings.name}! (+1 Pt)`,
-    `Maybe next time, ${props.currentGameSettings.name}! (+1 Pt)`,
-    `The next round will go better, ${props.currentGameSettings.name}! Don't stress. (+1 Pt)`
+    `You were super close! (+1 Pt)`,
+    `Maybe next time! (+1 Pt)`,
+    `Don't stress yet! (+1 Pt)`
   ]);
   const [correctMessage, setCorrectMessage] = useState([
-    `You got it, ${props.currentGameSettings.name}! (+2 Pts)`,
-    `You're killing it, ${props.currentGameSettings.name}! (+2 Pts)`,
-    `Awesome work, ${props.currentGameSettings.name}. (+2 Pts)`
+    `You got it! (+2 Pts)`,
+    `You're killing it! (+2 Pts)`,
+    `Awesome work. (+2 Pts)`
   ]);
   const [bothIncorrectMessage, setBothIncorrectMessage] = useState([
-    `The artist AND title are both incorrect! Try again, ${props.currentGameSettings.name}!`,
-    `Nope. I don't think so, ${props.currentGameSettings.name}. Give artist and title another try!`,
-    `Maybe next time, ${props.currentGameSettings.name}!`
+    `Both are incorrect!`,
+    `Nope. I don't think so!`,
+    `Maybe next time!`
   ]);
   const [noPointsMessage, setNoPointsMessage] = useState([
-    `Eek! Maybe next round, ${props.currentGameSettings.name}! (+0 Pts)`,
-    `That's too bad, ${props.currentGameSettings.name}. (+0 Pts)`,
-    `Maybe next time, ${props.currentGameSettings.name}! (+0 Pts)`
+    `Maybe next round! (+0 Pts)`,
+    `That's too bad. (+0 Pts)`,
+    `Maybe next time! (+0 Pts)`
   ]);
 
   // useEffect(()=>{
@@ -202,62 +202,62 @@ const Song = (props) => {
   return (
     <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', alignContent: 'center', height: '100%'}}>
       <div style={{height: '80.0%', width: '100%', display:'flex', flexWrap: 'wrap', justifyContent:'center', alignItems: 'center', marginLeft: '35px'}}>
-        <div style={{position: 'relative', border: 'solid', height: '550px', width: '850px', backgroundColor: '#001528', display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: '10px', marginTop: '50px', marginLeft: '100px'}}>
-          <div style={{position: 'relative', border: 'dashed #1776ff 3px', height: '535px', width: '835px', backgroundColor: '#001528', display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: '10px'}}>
-              <div style={{position: 'relative', border: 'solid 1px #fafafa', height: '520px', width: '820px', backgroundColor: '#001528', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', borderRadius: '10px', color: '#fafafa'}}>
-                <div style={props.beforeStart ? {visibility: "visible", position: 'absolute', top: '25%', color: '#fafafa', fontSize: '60px'} : {visibility: "hidden"}}>
+        <div style={{position: 'relative', border: 'solid', height: '600px', width: '850px', backgroundColor: '#001528', display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: '10px', marginTop: '-130px', marginLeft: '100px'}}>
+          <div style={{position: 'relative', border: 'dashed #1776ff 3px', height: '585px', width: '835px', backgroundColor: '#001528', display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: '10px'}}>
+              <div style={{position: 'relative', border: 'solid 1px #fafafa', height: '570px', width: '820px', backgroundColor: '#001528', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', borderRadius: '10px', color: '#fafafa'}}>
+                <div style={props.beforeStart ? {visibility: "visible", position: 'absolute', top: '23%', color: '#fafafa', fontSize: '75px'} : {visibility: "hidden"}}>
                   Click to Start
                 </div>
-                <div style={props.beforeStart ? {visibility: "visible", position: 'absolute', top: '42%'} : {visibility: "hidden"}}>
+                <div style={props.beforeStart ? {visibility: "visible", position: 'absolute', top: '43%'} : {visibility: "hidden"}}>
                   <img src={downArrows} alt=""/><img src={downArrows} style={{marginLeft: '60px'}} alt=""/><img src={downArrows} style={{marginLeft: '60px'}} alt=""/>
                 </div>
-                <div style={{width: '100%', display: 'inline-flex', justifyContent: 'center', fontSize: '32px', alignItems: 'center', position: 'absolute', top: '50px'}}>
+                <div style={{width: '100%', display: 'inline-flex', justifyContent: 'center', fontSize: '60px', alignItems: 'center', position: 'absolute', top: '50px'}}>
                   {props.statusMessage}
                 </div>
-                <div style={props.questionComplete ? {visibility: "visible", position: 'absolute', top: '24%', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', width:
-              '70%'} : {visibility: "hidden"}}>
-                  <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', marginTop: '3%'}}>
+                <div style={props.questionComplete ? {visibility: "visible", position: 'absolute', top: '28%', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', width:
+              '100%'} : {visibility: "hidden"}}>
+                  <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', marginTop: '5px'}}>
                     <div>
-                      <img src={props.completedAlbumArt} alt="" style={{height: '150px', width: '150px', border: 'solid #fafafa 1px', borderRadius: '10px'}}/>
+                      <img src={props.completedAlbumArt} alt="" style={{height: '200px', width: '200px', border: 'solid #fafafa 1px', borderRadius: '10px'}}/>
                     </div>
                     <div>
-                      <div style={props.completedTitle ? {margin: '10px', width: '100%', display: 'flex', justifyContent: 'flex-start', marginLeft: '20px', fontSize: '28px'} : {display: 'none'}}>
-                        <AudioOutlined style={{color: '#1776ff'}}/>  {props.completedTitle}
+                      <div style={props.completedTitle ? {margin: '10px', width: '100%', display: 'flex', justifyContent: 'flex-start', marginLeft: '20px', fontSize: '24px'} : {display: 'none'}}>
+                        <AudioOutlined style={{color: '#1776ff', marginRight: '15px'}}/>  {props.completedTitle}
                       </div>
-                      <div style={props.completedArtist ? {margin: '10px', width: '100%', display: 'flex', justifyContent: 'flex-start', marginLeft: '20px', fontSize: '28px'} : {display: 'none'}}>
-                        <UserOutlined style={{color: '#1776ff'}}/>  {props.completedArtist}
+                      <div style={props.completedArtist ? {margin: '10px', width: '100%', display: 'flex', justifyContent: 'flex-start', marginLeft: '20px', fontSize: '24px'} : {display: 'none'}}>
+                        <UserOutlined style={{color: '#1776ff', marginRight: '15px'}}/>  {props.completedArtist}
                       </div>
                     </div>
                   </div>
                 </div>
-                <img src={props.statusMessageImg} style={props.statusMessageImg ? {marginRight: '10px', height: '250px', width: '250px', position: 'absolute', top: '350px', left: '650px'} : {visibility: 'hidden'}} alt=""/>
-                <Button type="primary" style={props.beforeStart ? {visibility: "visible", height: '75px', width: '300px', fontSize: '30px', padding: '-30%', position: 'absolute', top: '55%', animation:'shake 0.82s cubic-bezier(.36, .07, .19, .97) both infinite'} : {visibility: 'hidden'}}  onClick={(e) => {readyUp(e)}}>Ready!</Button>
+                <img src={props.statusMessageImg} style={props.statusMessageImg ? {marginRight: '10px', fontSize: '50px', height: '300px', width: '300px', position: 'absolute', top: '380px', left: '660px'} : {visibility: 'hidden'}} alt=""/>
+                <Button type="primary" style={props.beforeStart ? {visibility: "visible", height: '75px', width: '400px', fontSize: '28px', padding: '-30%', position: 'absolute', top: '58%', animation:'shake 0.82s cubic-bezier(.36, .07, .19, .97) both infinite'} : {visibility: 'hidden'}}  onClick={(e) => {readyUp(e)}}>Ready!</Button>
 
-                <Button type="primary" style={props.questionComplete ? {visibility: "visible", height: '100px', width: '300px', fontSize: '50px', position: 'absolute', top: '350px'} : {visibility: 'hidden'}}  onClick={(e) => {readyUp(e)}}>Ready!</Button>
+                <Button type="primary" style={props.questionComplete ? {visibility: "visible", height: '75px', width: '400px', fontSize: '28px', position: 'absolute', top: '425px'} : {visibility: 'hidden'}}  onClick={(e) => {readyUp(e)}}>Ready!</Button>
               </div>
             </div>
         </div>
       </div>
-      <div style={{height: '30.0%', width: '23%', fontSize: '80px', marginLeft: '130px'}}>
+      <div style={{height: '30.0%', width: '400px', fontSize: '80px', marginLeft: '130px', marginTop: '-120px'}}>
         <Form>
-          <div style={{display: 'inline-flex', width: '100%'}}>
+          <div style={{display: 'inline-flex', width: '400px'}}>
             <Input
               size="large"
               placeholder="Song"
-              prefix={<AudioOutlined />}
-              style={props.titleInputCorrect ? {margin: '10px', border: `solid 2px #38b6ff`, height: '50px'} : {margin: '10px', border: `${props.titleInputBorder}`, height: '50px'}}
+              prefix={<AudioOutlined style={{marginRight: '15px'}}/>}
+              style={props.titleInputCorrect ? {margin: '10px', border: `solid 2px #38b6ff`, height: '75px', fontSize: '28px', width: '400px'} : {margin: '10px', border: `${props.titleInputBorder}`, height: '75px', fontSize: '24px', width: '400px'}}
               value={props.titleInput}
               border="true"
               disabled={props.disabledTitleInput}
               onChange={(e) => {props.setTitleInput(e.target.value)}}
             />
           </div>
-          <div style={{display: 'inline-flex', width: '100%'}}>
+          <div style={{display: 'inline-flex', width: '400px', marginTop: '10px', marginBottom: '0px'}}>
             <Input
               size="large"
               placeholder="Artist"
-              prefix={<UserOutlined />}
-              style={props.artistInputCorrect ? {margin: '10px', border: `solid 2px #38b6ff`, height: '50px'} : {margin: '10px', border: `${props.artistInputBorder}`, height: '50px'}}
+              prefix={<UserOutlined style={{marginRight: '15px'}}/>}
+              style={props.artistInputCorrect ? {margin: '10px', border: `solid 2px #38b6ff`, height: '75px', fontSize: '28px', width: '400px'} : {margin: '10px', border: `${props.artistInputBorder}`, height: '75px', fontSize: '24px', width: '400px'}}
               value={props.artistInput}
               border="true"
               disabled={props.disabledArtistInput}
@@ -269,11 +269,11 @@ const Song = (props) => {
             type="primary"
             htmlType="submit"
             disabled={guessDisabled}
-            style={{margin: '10px', width: '170px', height: '50px', borderRadius: '5px', color: '#fafafa', border: 'none'}}
+            style={{margin: '10px', width: '220px', height: '50px', borderRadius: '5px', color: '#fafafa', border: 'none', fontSize: '24px'}}
             onClick={(e) => {submitGuess(e)}}>
               Guess!
           </Button>
-          <Button type="dashed" htmlType="button" disabled={giveUpDisabled} style={{marginLeft: '10px', height: '50px', width: '130px'}} onClick={(e) => {giveUp(e)}}>Give Up</Button>
+          <Button type="dashed" htmlType="button" disabled={giveUpDisabled} style={{margin: '10px', height: '50px', width: '140px', fontSize: '24px'}} onClick={(e) => {giveUp(e)}}>Give Up</Button>
           </Form.Item>
         </Form>
       </div>

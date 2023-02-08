@@ -22,6 +22,8 @@ import whiteFlower1 from '../public/icons/whiteFlower1.svg';
 import whiteFlower2 from '../public/icons/whiteFlower2.svg';
 import whiteFlower3 from '../public/icons/whiteFlower3.svg';
 import Draggable from 'react-draggable';
+import musicalNote2 from '../public/icons/musicalNote2.svg';
+
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -223,8 +225,8 @@ const App = () => {
     }
   }, [currentSongNum])
 
-  const addToDb = function (e) {
-    e.preventDefault();
+  useEffect(() => {
+    if (gameOver === true) {
     var newObj = {
       name: currentGameSettings.name,
       difficulty: currentGameSettings.difficulty,
@@ -240,12 +242,13 @@ const App = () => {
 
     axios.post('http://localhost:3000/scores', newObj)
     .then(() => {
-      setGameOver(false);
-      setLeaderboardVisible(true);
+      // setGameOver(false);
+      // setLeaderboardVisible(true);
     }).catch((error) => {
       console.log(error);
     })
-  };
+  }
+  }, [gameOver]);
 
   const goToLeaderboard = (e) => {
     e.preventDefault();
@@ -274,26 +277,26 @@ const App = () => {
                     <div style={{width: '100%', height: '150px', fontSize: '28px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', marginTop: '20px'}}>
                       <img src={whiteFlower2} style={{height: '300px', width: '300px'}} alt=""/>
                     </div>
-                    <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginTop: '-62px', borderRadius: '50%', backgroundColor: '#001528', zIndex: '10', color: '#1776ff', width: '135px', height: '135px', border: 'solid 1px #001528'}}>
-                      <div style={{fontSize: '60px', marginTop: '10px'}}>
-                        {currentSongNum}/{currentGameSettings.songNum}
+                    <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginTop: '-60px', borderRadius: '50%', backgroundColor: '#001528', zIndex: '10', color: '#fafafa', width: '135px', height: '135px', border: 'solid 1px #001528'}}>
+                    <div style={{fontSize: '24px', color: '#fafafa', marginBottom: '-80px'}}>
+                      Song
                       </div>
-                      <div style={{fontSize: '22px', color: '#fafafa', marginTop: '-20px'}}>
-                        {currentScore} Pts
+                      <div style={{fontSize: '75px', marginTop: '0px', marginBottom: '0px', width: '100%', display: 'flex', justifyContent: 'center'}}>
+                        #{currentSongNum}
                       </div>
                     </div>
                   </div>
 
                   <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
-                    <div style={{color: '#1776ff', fontSize: '60px', width: '100%', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginTop: '-50px'}}>
+                    <div style={{color: '#1776ff', fontSize: '60px', width: '100%', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginTop: '-65px'}}>
                       {mm}:{ss}
                     </div>
-                    <div style={{color: '#fafafa', fontSize: '22px', marginTop: '5px'}}>
-                      {currentGameSettings.genre} | {currentGameSettings.difficulty}
+                    <div style={{color: '#fafafa', fontSize: '24px', marginTop: '5px'}}>
+                    {currentGameSettings.difficulty} | {currentGameSettings.genre}
                     </div>
                   </div>
 
-              <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', color: '#fafafa', fontSize: '60px', backgroundColor: '#001528', marginTop: '26px', marginLeft: '0px'}}>
+              <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', color: '#fafafa', fontSize: '60px', backgroundColor: '#001528', marginTop: '25px', marginLeft: '0px'}}>
                 <div style={{width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                   <img src={correct} style={{marginRight: '20px', height: '75px', width: '75px', paddingBottom: '5px'}} alt=""/> {numCorrect}
                 </div>
@@ -304,10 +307,13 @@ const App = () => {
                   <img src={incorrect} style={{marginRight: '20px', height: '75px', width: '75px'}} alt=""/> {numIncorrect}
                 </div>
               </div>
-            <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'flex-end', alignContent: 'flex-end', position: 'absolute', bottom: '20px', left: '20px'}}>
-              <div><Button type='primary' style={{margin: '10px', width: '270px', height: '50px', fontSize: '22px'}}>How to Play</Button></div>
-              <div><Button type='primary' style={{margin: '10px', width: '270px', height: '50px', fontSize: '22px'}} onClick={(e) => {showLeaderboardModal(e)}}>Leaderboard</Button></div>
-              <div><Button type='primary' style={{margin: '10px', width: '270px', height: '50px', fontSize: '22px'}} onClick={showModal}>Main Menu</Button></div>
+              <div style={{fontSize: '24px', color: '#fafafa', justifyContent: 'center', marginLeft:'35%'}}>
+                      {currentGameSettings.songNum} <img src={musicalNote2} style={{height: '45px', width: '45px', paddingTop: '30px', marginLeft: '-18px', marginRight: '-18px'}}/>  | {currentScore} Pts
+                      </div>
+            <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'flex-end', alignContent: 'flex-end', position: 'absolute', bottom: '15px', left: '20px'}}>
+              <div><Button type='primary' style={{margin: '10px', width: '270px', height: '50px', fontSize: '24px'}}>How to Play</Button></div>
+              <div><Button type='primary' style={{margin: '10px', width: '270px', height: '50px', fontSize: '24px'}} onClick={(e) => {showLeaderboardModal(e)}}>Leaderboard</Button></div>
+              <div><Button type='primary' style={{margin: '10px', width: '270px', height: '50px', fontSize: '24px'}} onClick={showModal}>Main Menu</Button></div>
             </div>
             </div>
             </div>
@@ -315,7 +321,7 @@ const App = () => {
           </Sider>
 
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', alignContent: 'center'}}>
-            <div style={ mainMenuVisible === false ? {display: 'none'} : {display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'absolute', left: '30%', top: '25%'}}>
+            <div style={ mainMenuVisible === false ? {display: 'none'} : {display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'absolute', left: '18%', top: '6.5%'}}>
                 <MainMenu
                   setNewGameButtonClicked={setNewGameButtonClicked}
                   setMainMenuVisible={setMainMenuVisible}
@@ -323,7 +329,7 @@ const App = () => {
                   setLeaderboardVisible={setLeaderboardVisible}
                 />
               </div>
-              <div style={ newGameMenuVisible === true ? {display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'absolute', left: '30%', top: '25%'} : {display: 'none'}}>
+              <div style={ newGameMenuVisible === true ? {display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'absolute', left: '18%', top: '6.5%'} : {display: 'none'}}>
                 <NewGameMenu
                   setCurrentGameSettings={setCurrentGameSettings}
                   setNewGameMenuVisible={setNewGameMenuVisible}
@@ -393,7 +399,7 @@ const App = () => {
                   setStatusMessageImg={setStatusMessageImg}
                 />
               </div>
-              <div style={ gameOver === true ? {display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'absolute', left: '30%', top: '25%'} : {display: 'none'}}>
+              <div style={ gameOver === true ? {display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'absolute', left: '18%', top: '6.5%'} : {display: 'none'}}>
                 <GameOver
                   currentScore={currentScore}
                   numCorrect={numCorrect}
@@ -402,7 +408,6 @@ const App = () => {
                   setGameOver={setGameOver}
                   setMainMenuVisible={setMainMenuVisible}
                   currentGameSettings={currentGameSettings}
-                  addToDb={addToDb}
                   setLeaderboardVisible={setLeaderboardVisible}
                   finalTime={finalTime}
                   setQuestionComplete={setQuestionComplete}
@@ -428,10 +433,14 @@ const App = () => {
                   setIsCorrectArtistImg={setIsCorrectArtistImg}
                   setBeforeStart={setBeforeStart}
                   setAvgTime={setAvgTime}
+                  avgTime={avgTime}
                   setTimer={setTimer}
+                  completedAlbumArt={completedAlbumArt}
+                  completedArtist={completedArtist}
+                  completedTitle={completedTitle}
                 />
               </div>
-              <div style={ leaderboardVisible === true ? {display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'absolute', left: '30%', top: '25%'} : {display: 'none'}}>
+              <div style={ leaderboardVisible === true ? {display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'absolute', left: '18%', top: '6.5%'} : {display: 'none'}}>
 
                 <Leaderboard
                   leaderboardVisible={leaderboardVisible}
