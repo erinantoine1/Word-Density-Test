@@ -17,26 +17,10 @@ app.get("/scores", (req, res) => {
   const genreValue = req.query.genreValue;
   const difficultyValue = req.query.difficultyValue;
   const songNumValue = req.query.songNumValue;
-  // let newGenreValue, newDifficultyValue, newSongNumValue;
 
-  // //   console.log('Genre: ', genreValue);
-  // // console.log('Difficulty: ', difficultyValue);
-  // // console.log('SongNum: ', songNumValue);
-
-  // if (genreValue === 'All Genres') {
-  //   newGenreValue = undefined;
-  // }
-
-  // if (difficultyValue === 'All Difficulties') {
-  //   newDifficultyValue = undefined;
-  // }
-
-  // if (songNumValue === 'All # of Songs') {
-  //   newSongNumValue = undefined;
-  // }
   getAllByGenreDifficultySongNum(genreValue, difficultyValue, songNumValue)
   .then((data) => {
-    console.log(data);
+   // console.log(data);
     res.send(data)
     })
 })
