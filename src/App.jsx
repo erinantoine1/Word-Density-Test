@@ -438,6 +438,7 @@ const App = () => {
                   completedAlbumArt={completedAlbumArt}
                   completedArtist={completedArtist}
                   completedTitle={completedTitle}
+                  goToLeaderboard={goToLeaderboard}
                 />
               </div>
               <div style={ leaderboardVisible === true ? {display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'absolute', left: '18%', top: '6.5%'} : {display: 'none'}}>

@@ -53,7 +53,9 @@ const Leaderboard = (props) => {
       color: '#fafafa',
       fontSize: 28,
       borderTop: '3px solid #fafafa',
-      borderBottom: '3px solid #fafafa'
+      borderBottom: '3px solid #fafafa',
+      paddingTop: '10px',
+      paddingBottom: '10px'
     },
     [`&.${tableCellClasses.body}`]: {
       color: '#fafafa',
@@ -154,20 +156,20 @@ const Leaderboard = (props) => {
         </div>
       </div>
       <div style={{fontSize: '125', margin: '10px', color: '#1776ff', marginTop: '-74%', display: 'flex', flexWrap: 'wrap', justifyContent: 'center'}}>Leaderboard</div>
-      <div style={{marginTop: '5px'}}>
-      <TableContainer style={{maxHeight: 575, width: 1160, overflowX: 'hidden'}}>
-      <Table stickyHeader style={{maxHeight: 575, width: 1000, tableLayout: 'auto', backgroundColor: '#001528', color: '#fafafa', marginLeft: '20px', borderBottom: '2px solid #fafafa'}} fixedHeader={true} size="small">
+      <div style={{marginTop: '-5px'}}>
+      <TableContainer style={{maxHeight: 550, width: 1160, overflowX: 'hidden'}}>
+      <Table stickyHeader style={{maxHeight: 550, width: 1000, tableLayout: 'auto', backgroundColor: '#001528', color: '#fafafa', marginLeft: '20px', borderBottom: '2px solid #fafafa'}} fixedHeader={true} size="small">
         <TableHead>
           <TableRow>
             <StyledTableCell align="center" style={{borderRadius: '10px 0px 0px 0px', borderLeft: '3px solid #fafafa'}}></StyledTableCell>
-            <StyledTableCell align="center" style={{paddingRight: '20px'}}>Name</StyledTableCell>
+            <StyledTableCell align="center" style={{paddingRight: '20px', width: '199px'}}>Name</StyledTableCell>
             <StyledTableCell align="center" style={{width: '75px', paddingRight: '30px'}}>G/D/#</StyledTableCell>
             <StyledTableCell align="center" style={{width: '75px', paddingRight: '30px'}}>Score</StyledTableCell>
             <StyledTableCell align="center" ><img style={{height: '75px', width: '75px'}} src={correct} alt=""/></StyledTableCell>
             <StyledTableCell align="center" ><img style={{height: '75px', width: '75px'}} src={partial} alt=""/></StyledTableCell>
             <StyledTableCell align="center" ><img style={{height: '75px', width: '75px'}} src={incorrect} alt=""/></StyledTableCell>
-            <StyledTableCell align="center"  >Total Time</StyledTableCell>
-            <StyledTableCell align="center" style={{borderRadius: '0px 10px 0px 0px', borderRight: '3px solid #fafafa', paddingLeft: '35px'}}>Avg Time</StyledTableCell>
+            <StyledTableCell align="center"  style={{width: '75px'}}>Total Time</StyledTableCell>
+            <StyledTableCell align="center" style={{borderRadius: '0px 10px 0px 0px', borderRight: '3px solid #fafafa', paddingLeft: '35px', width: '75px'}}>Avg Time</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody sx={{overflowX: 'hidden', overflowY: 'scroll'}}>
@@ -179,11 +181,11 @@ const Leaderboard = (props) => {
                 }
                 <div style={{maxHeight: '75px', maxWidth: '75px', borderRadius: '50%', position: 'absolute', left: '45%', top: '33%'}}>{index + 1}</div>
               </StyledTableCell>
-              <StyledTableCell align="center" style={{overflow: 'scroll', maxWidth: '200px', paddingRight: '20px'}}>{row.name}</StyledTableCell>
+              <StyledTableCell align="center" style={{overflow: 'scroll', minWidth: '200px', maxWidth: '200px'}}>{row.name}</StyledTableCell>
               <StyledTableCell align="center" style={{ display: 'flex', flexWrap: 'wrap', width: '120px'}}>
-                <Tag color="#38b6ff" style={{ color: '#001528', fontSize: '14px'}}><b>{row.difficulty}</b></Tag>
-                <Tag color="#1776ff" style={{ color: '#001528', fontSize: '14px', marginTop: '5px'}}><b>{row.genre}</b></Tag>
-                <Tag color="#554cff" style={{ color: '#001528', fontSize: '14px', marginTop: '5px'}}><b>{row.songNum}<img src={blackNote} style={{color: '#001528', width: '15px', height: '15px', paddingTop: '4px'}}/></b></Tag>
+                <Tag color="#554cff" style={{ color: '#001528', fontSize: '14px', marginBottom: '5px'}}><b>{row.songNum}<img src={blackNote} style={{color: '#001528', width: '15px', height: '15px', paddingTop: '4px'}}/></b></Tag>
+                <Tag color="#38b6ff" style={{ color: '#001528', fontSize: '14px'}}><b>{row.difficulty === 0 ? "Easy" : (row.difficulty === 1 ? "Medium" : "Hard")}</b></Tag>
+                <Tag color="#1776ff" style={{ color: '#001528', fontSize: '14px', marginTop: '5px'}}><b>{row.genre === 0 ? "Random" : (row.genre === 1 ? "Pop" : "Rock")}</b></Tag>
               </StyledTableCell>
               <StyledTableCell align="center" style={{fontSize: 32, paddingRight: '30px'}}>{row.score}</StyledTableCell>
               <StyledTableCell align="center" style={{fontSize: 32}}>{row.correct}</StyledTableCell>
@@ -196,25 +198,24 @@ const Leaderboard = (props) => {
         </TableBody>
       </Table>
     </TableContainer>
-        <div style={{display: 'inline-flex', justifyContent: 'center', alignItems: 'center', color: '#1776ff', backgroundColor: '#001528', position: 'absolute', zIndex: 2, height: '125px', bottom: '27px', marginLeft: '20px', borderBottom: 'solid #fafafa 3px', borderLeft: '3px solid #fafafa', borderRight: '3px solid #fafafa', paddingRight: '19px', borderRadius: '0px 0px 10px 10px', width: '1104px', borderTop: '3px solid #fafafa'}}>
+        <div style={{display: 'inline-flex', justifyContent: 'center', alignItems: 'center', color: '#1776ff', backgroundColor: '#001528', position: 'absolute', zIndex: 2, height: '125px', bottom: '27px', marginLeft: '20px', borderBottom: 'solid #fafafa 3px', borderLeft: '3px solid #fafafa', borderRight: '3px solid #fafafa', paddingRight: '19px', borderRadius: '0px 0px 10px 10px', width: '1105px', borderTop: '3px solid #fafafa'}}>
 
         <StyledSelect
-          defaultValue={'All Genres'}
-          value={genreValue}
+          defaultValue={'All # of Songs'}
+          value={songNumValue}
           MenuProps={{
             PaperProps: {sx: {marginTop: '10px', "& li": {
               fontSize: 12,
           }, }}
           }}
           onChange={(event) => {
-            setGenreValue(event.target.value)
+            setSongNumValue(event.target.value)
           }}>
-          <MenuItem value={'All Genres'}>All Genres</MenuItem>
-          <MenuItem value={'Random'}>Random</MenuItem>
-          <MenuItem value={'Pop'}>Pop</MenuItem>
-          <MenuItem value={'Alt/Rock'}>Alt/Rock</MenuItem>
+          <MenuItem value={'All # of Songs'}>All # of Songs</MenuItem>
+          <MenuItem value={10}>10 Songs</MenuItem>
+          <MenuItem value={20}>20 Songs</MenuItem>
+          <MenuItem value={30}>30 Songs</MenuItem>
         </StyledSelect>
-
         <StyledSelect
           defaultValue={'All Difficulties'}
           value={difficultyValue}
@@ -232,20 +233,20 @@ const Leaderboard = (props) => {
           <MenuItem value={'Hard'}>Hard</MenuItem>
         </StyledSelect>
         <StyledSelect
-          defaultValue={'All # of Songs'}
-          value={songNumValue}
+          defaultValue={'All Genres'}
+          value={genreValue}
           MenuProps={{
             PaperProps: {sx: {marginTop: '10px', "& li": {
               fontSize: 12,
           }, }}
           }}
           onChange={(event) => {
-            setSongNumValue(event.target.value)
+            setGenreValue(event.target.value)
           }}>
-          <MenuItem value={'All # of Songs'}>All # of Songs</MenuItem>
-          <MenuItem value={10}>10</MenuItem>
-          <MenuItem value={20}>20</MenuItem>
-          <MenuItem value={30}>30</MenuItem>
+          <MenuItem value={'All Genres'}>All Genres</MenuItem>
+          <MenuItem value={'Random'}>Random</MenuItem>
+          <MenuItem value={'Pop'}>Pop</MenuItem>
+          <MenuItem value={'Rock'}>Alt/Rock</MenuItem>
         </StyledSelect>
         <Button style={{width: '75px', height: '50px', marginLeft: '20px'}}
           type="primary"
