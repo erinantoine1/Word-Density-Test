@@ -44,6 +44,7 @@ Coming soon!
 
 ### Main Menu <a name="mainMenuFeatures"></a>
 
+<img src="./MainMenuSettingsGIF.gif" width=75% height=75% />
 <img src="https://i.imgur.com/NzgEqnC.png" width=75% height=75%/>
 - From the main menu, users may navigate to other pages in the app by clicking on the associated button
 <ul>
@@ -51,7 +52,7 @@ Coming soon!
 	<li>How to Play: Navigates to the game tutorial</li>
     	<li>Leaderboard: Navigates to the leaderboard containing scores/times for all users across all game modes</li>
 </ul>
-- All .svg images were custom-designed using Canva to embody the carefree/whimsical theme of the game 
+- All .svg images were custom-designed using Canva to embody the carefree/whimsical theme of the game
 
 ### Settings <a name="settingsFeatures"></a>
 
