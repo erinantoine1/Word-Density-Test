@@ -4,20 +4,27 @@
 * https://github.com/erinantoine1
 * https://www.linkedin.com/in/erin-antoine/
 
-### Description
+## Contents
+1. [Description](#description)
+2. [Technologies Used](#techUsed)
+3. [Features](#features)
+4. [Installation](#installation)
+<!--     1. [Sub paragraph](#subparagraph1) -->
+
+### Description <a name="description"></a>
 
 Melody Mastermind is a full-stack game testing music knowledge across multiple genres
 
-### Technologies Used
+### Technologies Used <a name="techUsed"></a>
 
 This application is written in JavaScript, HTML and CSS, and uses:
 * React, Axios, and Styled Components in the front end
 * Express with middleware as a proxy backend server to enhance security
 * Webpack and Babel to bundle and transcompile project to be run in the browser
 
-## Overview
+## Features <a name="features"></a>
 
-## Installation
+## Installation <a name="installation"></a>
 
 <!-- 1. Install packages using the following command
 
