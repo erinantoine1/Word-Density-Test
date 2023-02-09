@@ -5,14 +5,13 @@ Melody Mastermind is a full-stack game testing music knowledge across multiple g
 ## Contents
 1. [Project Engineer](#projectEngineer)
 2. [Technologies Used](#techUsed)
-3. [Demo Video](#demo)
-4. [Features](#features)
+3. [Features](#features)
     1. [Main Menu](#mainMenuFeatures)
     2. [Settings](#settingsFeatures)
     3. [In Game](#inGameFeatures)
     4. [Game Over](#gameOverFeatures)
     5. [Leaderboard](#leaderboardFeatures)
-5. [Installation](#installation)
+4. [Installation](#installation)
 
 ## Project Engineer <a name="projectEngineer"></a>
 ### Erin Antoine
@@ -36,15 +35,10 @@ Melody Mastermind is a full-stack game testing music knowledge across multiple g
 <img src="https://tutorialzine.com/media/2016/08/15_howler.png" width=100 height=28/>
  <img src="https://yggdrasill-7c9.gallerycdn.vsassets.io/extensions/yggdrasill-7c9/axios-snippets/1.0.0/1547542460873/Microsoft.VisualStudio.Services.Icons.Default" width=75 height=28/>
 
-## Demo Video <a name="demo"></a>
-
-Coming soon!
-
 ## Features <a name="features"></a>
 
 ### Main Menu <a name="mainMenuFeatures"></a>
 
-<img src="./MainMenuSettingsGIF.gif" width=75% height=75% />
 <img src="https://i.imgur.com/NzgEqnC.png" width=75% height=75%/>
 - From the main menu, users may navigate to other pages in the app by clicking on the associated button
 <ul>
@@ -56,7 +50,7 @@ Coming soon!
 
 ### Settings <a name="settingsFeatures"></a>
 
-<img src="https://i.imgur.com/R70vivg.png" width=75% height=75%/>
+<img src="./GIFs/Settings.gif" width=75% height=75% />
 - Users are prompted to choose various settings for their new game <br />
 <ul>
 	<li>Name: Name/nickname/username, limited to 20 characters (displayed with scores on leaderboard)</li>
@@ -64,7 +58,7 @@ Coming soon!
 	<li>Difficulty: The difficulty of your game (Easy, Medium, Hard)</li>
 	<li>Genre: The genre of the songs in your game (Random, Pop, Alt/Rock)</li>
 </ul>
-- From settings, users may navigate to other pages in the app by clicking on the associated icon at the top of the page
+- From settings, users may navigate to other pages in the app by clicking on the associated icon @ top of page
 <ul>
 	<li><: Navigates back to the main menu</li>
 	<li>!: Navigates to the game tutorial</li>
