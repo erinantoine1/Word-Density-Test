@@ -5,11 +5,18 @@ Melody Mastermind is a full-stack game testing music knowledge across multiple g
 ## Contents
 1. [Project Engineer](#projectEngineer)
 2. [Technologies Used](#techUsed)
-3. [Features](#features)
-    1. [In Progress](#inProgress)
-4. [Installation](#installation)
+3. [Demo Video](#demo)
+4. [Features](#features)
+    1. [Main Menu](#mainMenuFeatures)
+    2. [Settings](#settingsFeatures)
+    3. [In Game](#inGameFeatures)
+    4. [Game Over](#gameOverFeatures)
+    5. [Leaderboard](#leaderboardFeatures)
+    6. [In Progress](#inProgress)
+5. [Installation](#installation)
 
-## Project Engineer: Erin Antoine <a name="projectEngineer"></a>
+## Project Engineer <a name="projectEngineer"></a>
+### Erin Antoine
 * https://github.com/erinantoine1
 * https://www.linkedin.com/in/erin-antoine/
 
@@ -28,9 +35,52 @@ Melody Mastermind is a full-stack game testing music knowledge across multiple g
 <img src="https://img.shields.io/badge/json-5E5C5C?style=for-the-badge&logo=json&logoColor=white"/>
 <img src="https://img.shields.io/badge/Babel-F9DC3E?style=for-the-badge&logo=babel&logoColor=white"/>
 <img src="https://tutorialzine.com/media/2016/08/15_howler.png" width=100 height=28/>
-<img src="https://yggdrasill-7c9.gallerycdn.vsassets.io/extensions/yggdrasill-7c9/axios-snippets/1.0.0/1547542460873/Microsoft.VisualStudio.Services.Icons.Default" width=75 height=28/>
+ <img src="https://yggdrasill-7c9.gallerycdn.vsassets.io/extensions/yggdrasill-7c9/axios-snippets/1.0.0/1547542460873/Microsoft.VisualStudio.Services.Icons.Default" width=75 height=28/>
+
+## Demo Video <a name="demo"></a>
+
+Coming soon!
 
 ## Features <a name="features"></a>
+
+### Main Menu <a name="mainMenuFeatures"></a>
+
+<img src="https://i.imgur.com/NzgEqnC.png" width=75% height=75%/>
+- From the main menu, users may navigate to other pages in the app by clicking on the associated button
+<ul>
+	<li>New Game: Navigates to the settings page to create a new game</li>
+	<li>How to Play: Navigates to the game tutorial</li>
+    	<li>Leaderboard: Navigates to the leaderboard containing scores/times for all users across all game modes</li>
+</ul>
+- All .svg images were custom-designed using Canva to embody the carefree/whimsical theme of the game 
+
+### Settings <a name="settingsFeatures"></a>
+
+<img src="https://i.imgur.com/R70vivg.png" width=75% height=75%/>
+- Users are prompted to choose various settings for their new game <br />
+<ul>
+	<li>Name: Name/nickname/username, limited to 20 characters (displayed with scores on leaderboard)</li>
+	<li># of Songs: The total number of songs to be quizzed on in your game (10, 20, 30)</li>
+	<li>Difficulty: The difficulty of your game (Easy, Medium, Hard)</li>
+	<li>Genre: The genre of the songs in your game (Random, Pop, Alt/Rock)</li>
+</ul>
+- From settings, users may navigate to other pages in the app by clicking on the associated icon at the top of the page
+<ul>
+	<li><: Navigates back to the main menu</li>
+	<li>!: Navigates to the game tutorial</li>
+</ul>
+
+### In Game <a name="inGameFeatures"></a>
+
+<img src="https://i.imgur.com/u5JjFlG.png" width=75% height=75%/>
+
+### Game Over <a name="gameOverFeatures"></a>
+
+<img src="https://i.imgur.com/AYqtWRL.png" width=75% height=75%/>
+
+### Leaderboard <a name="leaderboardFeatures"></a>
+
+<img src="https://i.imgur.com/aZnUvgN.png" width=75% height=75%/>
 
 ### Features/updates in progress <a name="inProgress"></a>
 
