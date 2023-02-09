@@ -66,8 +66,16 @@ Melody Mastermind is a full-stack game testing music knowledge across multiple g
 
 ### In Game <a name="inGameFeatures"></a>
 
-<img src="https://i.imgur.com/u5JjFlG.png" width=75% height=75%/>
--Description coming soon
+<img src="./GIFs/gameStart.gif" width=75% height=75%/>
+-The left panel contains important information for the user (current song #/score/time/settings info) that remains visible and is updated throughout the game<br /><br />
+-Users can also use the buttons on the bottom left corner to navigate to other pages (Note: users will lose all progress when navigating away from the game)
+<ul>
+	<li>How to Play: Navigates to the game tutorial</li>
+    	<li>Leaderboard: Navigates to the leaderboard containing scores/times for all users across all game modes</li>
+	<li>Main Menu: Navigates to the main menu of the game </li>
+</ul>
+-Animations in the center of the screen draw attention to where the user will directly interact with the UI
+
 
 ### Game Over <a name="gameOverFeatures"></a>
 
