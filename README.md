@@ -12,7 +12,6 @@ Melody Mastermind is a full-stack game testing music knowledge across multiple g
     3. [In Game](#inGameFeatures)
     4. [Game Over](#gameOverFeatures)
     5. [Leaderboard](#leaderboardFeatures)
-    6. [In Progress](#inProgress)
 5. [Installation](#installation)
 
 ## Project Engineer <a name="projectEngineer"></a>
@@ -73,18 +72,20 @@ Coming soon!
 ### In Game <a name="inGameFeatures"></a>
 
 <img src="https://i.imgur.com/u5JjFlG.png" width=75% height=75%/>
+-Description coming soon
 
 ### Game Over <a name="gameOverFeatures"></a>
 
 <img src="https://i.imgur.com/AYqtWRL.png" width=75% height=75%/>
+-Description coming soon
 
 ### Leaderboard <a name="leaderboardFeatures"></a>
 
 <img src="https://i.imgur.com/aZnUvgN.png" width=75% height=75%/>
-
-### Features/updates in progress <a name="inProgress"></a>
+-Description coming soon
 
 ## Installation <a name="installation"></a>
+Coming soon!!
 
 <!-- 1. Install packages using the following command
 
