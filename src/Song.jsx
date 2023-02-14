@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Button, Radio, Tooltip, Input, theme, Form } from 'antd';
+import React, { useState, useEffect, useRef } from 'react';
+import { Button, Radio, Tooltip, Input, theme, Form, Tour } from 'antd';
 import { LaptopOutlined, AudioOutlined, UserOutlined } from '@ant-design/icons';
 import { Howl } from 'howler';
 import Timer from 'timermodule';
@@ -7,6 +7,7 @@ import downArrows from '../public/icons/downArrows.gif';
 import correct from '../public/icons/smile2.svg';
 import partial from '../public/icons/neutral.svg';
 import incorrect from '../public/icons/frown2.svg';
+import { songsArray, popSongsArray, rockSongsArray } from './songBank.js'
 
 const Song = (props) => {
   const [giveUpDisabled, setGiveUpDisabled] = useState(true);
@@ -38,14 +39,29 @@ const Song = (props) => {
     `Maybe next time! (+0 Pts)`
   ]);
 
-  // useEffect(()=>{
-  //   if (props.currentGameSettings.name !== undefined) {
-  //     props.setCurrentGameSettings.name(props.currentGameSettings.name);
+  // useEffect(() => {
+  //   if (props.currentSongNum === 1) {
+  //     if (props.currentGameSettings.genre === 'Random') {
+  //       props.setSongArray(songsArray);
+  //       props.setUnplayedSongs(songsArray.slice());
+  //       props.setCurrentSong(songsArray.slice()[Math.floor(Math.random() * songsArray.slice().length)]);
+  //     }
+  //     if (props.currentGameSettings.genre === 'Pop') {
+  //       props.setSongArray(popSongsArray);
+  //       props.setUnplayedSongs(popSongsArray.slice());
+  //       props.setCurrentSong(popSongsArray.slice()[Math.floor(Math.random() * popSongsArray.slice().length)]);
+
+  //     }
+  //     if (props.currentGameSettings.genre === 'Alt/Rock') {
+  //       props.setSongArray(rockSongsArray);
+  //       props.setUnplayedSongs(rockSongsArray.slice());
+  //       props.setCurrentSong(rockSongsArray.slice()[Math.floor(Math.random() * rockSongsArray.slice().length)]);
+
+  //     }
   //   }
-  // }, [props.currentGameSettings.name]);
+  // }, [props.currentSongNum])
 
   const readyUp = (e) => {
-    console.log('NAME: ', props.currentGameSettings.name);
     props.setBeforeStart(false);
     props.setQuestionComplete(false);
     props.setArtistInputCorrect(false);
@@ -66,6 +82,7 @@ const Song = (props) => {
     if (props.currentSongNum === 1) {
       props.onActionClick();
     }
+
     props.currentSong.mp3.play();
     for (var i = 0; i < props.unplayedSongs.length; i++) {
       if (props.unplayedSongs[i].title === props.currentSong.title) {
@@ -81,8 +98,14 @@ const Song = (props) => {
   };
 
   const submitGuess = (e) => {
+    var regex = /[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/g;
+    var inputTitle = props.titleInput.replace(regex, '').toLowerCase();
+    var songTitle = props.currentSong.title.replace(regex, '').toLowerCase();
+    var inputArtist = props.artistInput.replace(regex, '').toLowerCase();
+    var songArtist = props.currentSong.artist.replace(regex, '').toLowerCase();
+
     e.preventDefault();
-    if ((props.titleInput === props.currentSong.title) && (props.artistInput !== props.currentSong.artist)) {
+    if ((inputTitle === songTitle) && (inputArtist !== songArtist)) {
       props.setStatusMessageImg(partial);
       props.setTitleInputCorrect(true);
       props.setDisabledTitleInput(true);
@@ -93,7 +116,7 @@ const Song = (props) => {
       props.setStatusMessage(partiallyCorrectMessage[Math.floor(Math.random() * partiallyCorrectMessage.length)]);
       props.setTitleInputBorder('solid 2px #38b5ff');
       props.setArtistInputBorder('solid 2px #554cff');
-    } else if ((props.titleInput !== props.currentSong.title) && (props.artistInput === props.currentSong.artist)) {
+    } else if ((inputTitle !== songTitle) && (inputArtist === songArtist)) {
       props.setStatusMessageImg(partial);
       props.setTitleInputCorrect(false);
       props.setDisabledTitleInput(false);
@@ -104,7 +127,7 @@ const Song = (props) => {
       props.setTitleInputBorder('solid 2px #554cff');
       props.setArtistInputBorder('solid 2px #38b5ff');
       props.setStatusMessage(partiallyCorrectMessage[Math.floor(Math.random() * partiallyCorrectMessage.length)]);
-    } else if ((props.titleInput !== props.currentSong.title) && (props.artistInput !== props.currentSong.artist)) {
+    } else if ((inputTitle !== songTitle) && (inputArtist !== songArtist)) {
       props.setStatusMessageImg(incorrect);
       props.setArtistInputCorrect(false);
       props.setDisabledArtistInput(false);
@@ -115,7 +138,7 @@ const Song = (props) => {
       props.setStatusMessage(bothIncorrectMessage[Math.floor(Math.random() * bothIncorrectMessage.length)]);
       props.setTitleInputBorder('solid 2px #554cff');
       props.setArtistInputBorder('solid 2px #554cff');
-    } else if ((props.titleInput === props.currentSong.title) && (props.artistInput === props.currentSong.artist)) {
+    } else if ((inputTitle === songTitle) && (inputArtist === songArtist)) {
       setGiveUpDisabled(true);
       setGuessDisabled(true);
       props.setStatusMessageImg(correct);
@@ -136,11 +159,60 @@ const Song = (props) => {
     }
   };
 
+
+
   const giveUp = (e) => {
+
+    var regex = /[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/g;
+    var inputTitle = props.titleInput.replace(regex, '').toLowerCase();
+    var songTitle = props.currentSong.title.replace(regex, '').toLowerCase();
+    var inputArtist = props.artistInput.replace(regex, '').toLowerCase();
+    var songArtist = props.currentSong.artist.replace(regex, '').toLowerCase();
+
     e.preventDefault();
     setGiveUpDisabled(true);
     setGuessDisabled(true);
-    if ((props.titleInput === props.currentSong.title) && (props.artistInput !== props.currentSong.artist)) {
+
+    if (props.currentGameSettings.difficulty === "Medium") {
+      props.setCompletedTitle(props.currentSong.title);
+      props.setCompletedArtist(props.currentSong.artist);
+      props.setCompletedAlbumArt(props.currentSong.albumArt);
+      props.setStatusMessageImg(incorrect);
+      props.setDisabledArtistInput(false);
+      props.setIsCorrectArtistImg(incorrect);
+      props.setDisabledTitleInput(false);
+      props.setIsCorrectTitleImg(incorrect);
+      props.setStatusMessage(noPointsMessage[Math.floor(Math.random() * noPointsMessage.length)]);
+      props.setNumIncorrect(props.numIncorrect + 1);
+      props.setCurrentSongNum(props.currentSongNum + 1);
+      props.setTitleInputBorder('solid 2px #554cff');
+      props.setArtistInputBorder('solid 2px #554cff');
+      props.currentSong.mp3.stop();
+      props.setQuestionComplete(true);
+      props.setCurrentSongNum(props.currentSongNum + 1);
+      props.setCurrentSong(props.unplayedSongs[Math.floor(Math.random() * props.unplayedSongs.length)]);
+    } else if (props.currentGameSettings.difficulty === "Hard") {
+      props.setCompletedTitle(props.currentSong.title);
+      props.setCompletedArtist(props.currentSong.artist);
+      props.setCompletedAlbumArt(props.currentSong.albumArt);
+      props.setStatusMessageImg(incorrect);
+      props.setDisabledArtistInput(false);
+      props.setIsCorrectArtistImg(incorrect);
+      props.setDisabledTitleInput(false);
+      props.setIsCorrectTitleImg(incorrect);
+      props.setStatusMessage(noPointsMessage[Math.floor(Math.random() * noPointsMessage.length)]);
+      props.setNumIncorrect(props.numIncorrect + 1);
+      props.setCurrentSongNum(props.currentSongNum + 1);
+      props.setTitleInputBorder('solid 2px #554cff');
+      props.setArtistInputBorder('solid 2px #554cff');
+      props.currentSong.mp3.stop();
+      props.setLives(props.lives-1);
+      props.setQuestionComplete(true);
+      props.setCurrentSongNum(props.currentSongNum + 1);
+      props.setCurrentSong(props.unplayedSongs[Math.floor(Math.random() * props.unplayedSongs.length)]);
+    } else {
+
+    if ((inputTitle === songTitle) && (inputArtist !== songArtist)) {
       props.setStatusMessageImg(partial);
       props.setCompletedTitle(props.currentSong.title);
       props.setCompletedArtist(props.currentSong.artist);
@@ -159,7 +231,7 @@ const Song = (props) => {
       props.setCurrentSongNum(props.currentSongNum + 1);
       props.setCurrentSong(props.unplayedSongs[Math.floor(Math.random() * props.unplayedSongs.length)]);
     }
-    if ((props.titleInput !== props.currentSong.title) && (props.artistInput === props.currentSong.artist)) {
+    if ((inputTitle !== songTitle) && (inputArtist === songArtist)) {
       props.setStatusMessageImg(partial);
       props.setCompletedTitle(props.currentSong.title);
       props.setCompletedArtist(props.currentSong.artist);
@@ -178,7 +250,7 @@ const Song = (props) => {
       props.setCurrentSongNum(props.currentSongNum + 1);
       props.setCurrentSong(props.unplayedSongs[Math.floor(Math.random() * props.unplayedSongs.length)]);
     }
-    if ((props.titleInput !== props.currentSong.title) && (props.artistInput !== props.currentSong.artist)) {
+    if ((inputTitle !== songTitle) && (inputArtist !== songArtist)) {
       props.setCompletedTitle(props.currentSong.title);
       props.setCompletedArtist(props.currentSong.artist);
       props.setCompletedAlbumArt(props.currentSong.albumArt);
@@ -197,7 +269,9 @@ const Song = (props) => {
       props.setCurrentSongNum(props.currentSongNum + 1);
       props.setCurrentSong(props.unplayedSongs[Math.floor(Math.random() * props.unplayedSongs.length)]);
     }
+  }
   };
+
 
   return (
     <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', alignContent: 'center', height: '100%'}}>
@@ -232,7 +306,6 @@ const Song = (props) => {
                 </div>
                 <img src={props.statusMessageImg} style={props.statusMessageImg ? {marginRight: '10px', fontSize: '50px', height: '300px', width: '300px', position: 'absolute', top: '380px', left: '660px'} : {visibility: 'hidden'}} alt=""/>
                 <Button type="primary" style={props.beforeStart ? {visibility: "visible", height: '75px', width: '400px', fontSize: '28px', padding: '-30%', position: 'absolute', top: '58%', animation:'shake 0.82s cubic-bezier(.36, .07, .19, .97) both infinite'} : {visibility: 'hidden'}}  onClick={(e) => {readyUp(e)}}>Ready!</Button>
-
                 <Button type="primary" style={props.questionComplete ? {visibility: "visible", height: '75px', width: '400px', fontSize: '28px', position: 'absolute', top: '425px'} : {visibility: 'hidden'}}  onClick={(e) => {readyUp(e)}}>Ready!</Button>
               </div>
             </div>
@@ -277,6 +350,8 @@ const Song = (props) => {
           </Form.Item>
         </Form>
       </div>
+
+      <Tour open={props.tourOpen} onClose={() => setTourOpen(false)} steps={props.steps} />
     </div>
   );
 };

@@ -49,7 +49,7 @@ const MainMenu = (props) => {
             <Button className='mainMenuButton' type="primary" style={{width: '400px', height: '75px', fontSize: '28px', marginLeft: '350px', marginBottom: '15px'}} onClick={(e) => {goToNewGameMenu(e)}}>New Game</Button>
           </div>
           <div style={{marginTop: '20px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginRight: '-100px'}}>
-            <Button  className='mainMenuButton' type="dashed" style={{width: '400px', height: '75px', fontSize: '28px', color: '#001258', marginLeft: '350px', marginBottom: '15px'}}>How to Play</Button>
+            <Button  className='mainMenuButton' type="dashed" style={{width: '400px', height: '75px', fontSize: '28px', color: '#001258', marginLeft: '350px', marginBottom: '15px'}}onClick={(e) => {props.showTutorial(e)}}>How to Play</Button>
           </div>
           <div style={{marginTop: '20px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginLeft: '-5px', marginRight: '-100px'}}>
             <Button  className='mainMenuButton' type="dashed" style={{width: '400px', height: '75px', fontSize: '28px', marginLeft: '350px', color: '#001258'}} onClick={(e) => {goToLeaderboard(e)}}>Leaderboard</Button>

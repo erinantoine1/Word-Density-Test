@@ -123,6 +123,49 @@ import youOughtaKnowAlbumArt from '../public/icons/albumArt/youOughtaKnowAlbumAr
 import youReallyGotMeAlbumArt from '../public/icons/albumArt/youReallyGotMeAlbumArt.jpeg';
 import vibeCheckAlbumArt from '../public/icons/albumArt/vibeCheckAlbumArt.jpeg';
 import seasonTwoEpisodeThreeAlbumArt from '../public/icons/albumArt/seasonTwoEpisodeThreeAlbumArt.jpeg';
+import toxic from '../public/Toxic.mp3';
+import genieInABottle from '../public/GenieInABottle.mp3';
+import sayMyName from '../public/SayMyName.mp3';
+import sexyback from '../public/Sexyback.mp3';
+import sevenRings from '../public/SevenRings.mp3';
+import badRomance from '../public/badRomance.mp3';
+import noScrubs from '../public/NoScrubs.mp3';
+import girlsJustWannaHaveFun from '../public/GirlsJustWannaHaveFun.mp3';
+import materialGirl from '../public/MaterialGirl.mp3';
+import wannabe from '../public/Wannabe.mp3';
+import dancingQueen from '../public/DancingQueen.mp3';
+import diamonds from '../public/Diamonds.mp3';
+import yeah from '../public/Yeah.mp3';
+import baby from '../public/Baby.mp3';
+import levitating from '../public/Levitating.mp3';
+import gangnamStyle from '../public/GangnamStyle.mp3';
+import macarena from '../public/Macarena.mp3';
+import mamboNumberFive from '../public/MamboNumberFive.mp3';
+import iceIceBaby from '../public/IceIceBaby.mp3';
+import tubthumping from '../public/Tubthumping.mp3';
+import heyYa from '../public/HeyYa.mp3';
+
+import toxicAlbumArt from '../public/icons/albumArt/toxicAlbumArt.jpeg';
+import genieInABottleAlbumArt from '../public/icons/albumArt/genieInABottleAlbumArt.jpeg';
+import sayMyNameAlbumArt from '../public/icons/albumArt/sayMyNameAlbumArt.jpg';
+import sexybackAlbumArt from '../public/icons/albumArt/sexybackAlbumArt.jpg';
+import sevenRingsAlbumArt from '../public/icons/albumArt/sevenRingsAlbumArt.jpeg';
+import badRomanceAlbumArt from '../public/icons/albumArt/badRomanceAlbumArt.jpeg';
+import noScrubsAlbumArt from '../public/icons/albumArt/noScrubsAlbumArt.jpeg';
+import girlsJustWannaHaveFunAlbumArt from '../public/icons/albumArt/girlsJustWannaHaveFunAlbumArt.jpeg';
+import materialGirlAlbumArt from '../public/icons/albumArt/materialGirlAlbumArt.jpeg';
+import wannabeAlbumArt from '../public/icons/albumArt/wannabeAlbumArt.jpg';
+import dancingQueenAlbumArt from '../public/icons/albumArt/dancingQueenAlbumArt.jpeg';
+import diamondsAlbumArt from '../public/icons/albumArt/diamondsAlbumArt.jpg';
+import yeahAlbumArt from '../public/icons/albumArt/yeahAlbumArt.jpeg';
+import babyAlbumArt from '../public/icons/albumArt/babyAlbumArt.jpeg';
+import levitatingAlbumArt from '../public/icons/albumArt/levitatingAlbumArt.jpeg';
+import gangnamStyleAlbumArt from '../public/icons/albumArt/gangnamStyleAlbumArt.jpeg';
+import mamboNoFiveAlbumArt from '../public/icons/albumArt/mamboNoFiveAlbumArt.jpeg';
+import macarenaAlbumArt from '../public/icons/albumArt/macarenaAlbumArt.jpeg';
+import iceIceBabyAlbumArt from '../public/icons/albumArt/iceIceBabyAlbumArt.jpeg';
+import tubthumpingAlbumArt from '../public/icons/albumArt/tubthumpingAlbumArt.jpeg';
+import heyYaAlbumArt from '../public/icons/albumArt/heyYaAlbumArt.jpeg';
 import { Howl } from 'howler';
 
   var sound1 = new Howl({
@@ -371,6 +414,90 @@ import { Howl } from 'howler';
   });
   var sound62 = new Howl({
     src: [seasonTwoEpisodeThree],
+    html5: true
+  });
+  var sound63 = new Howl({
+    src: [toxic],
+    html5: true
+  });
+  var sound64 = new Howl({
+    src: [genieInABottle],
+    html5: true
+  });
+  var sound65 = new Howl({
+    src: [sayMyName],
+    html5: true
+  });
+  var sound66 = new Howl({
+    src: [sexyback],
+    html5: true
+  });
+  var sound67 = new Howl({
+    src: [sevenRings],
+    html5: true
+  });
+  var sound68 = new Howl({
+    src: [badRomance],
+    html5: true
+  });
+  var sound69 = new Howl({
+    src: [noScrubs],
+    html5: true
+  });
+  var sound70 = new Howl({
+    src: [girlsJustWannaHaveFun],
+    html5: true
+  });
+  var sound71 = new Howl({
+    src: [materialGirl],
+    html5: true
+  });
+  var sound72 = new Howl({
+    src: [wannabe],
+    html5: true
+  });
+  var sound73 = new Howl({
+    src: [dancingQueen],
+    html5: true
+  });
+  var sound74 = new Howl({
+    src: [diamonds],
+    html5: true
+  });
+  var sound75 = new Howl({
+    src: [yeah],
+    html5: true
+  });
+  var sound76 = new Howl({
+    src: [baby],
+    html5: true
+  });
+  var sound77 = new Howl({
+    src: [levitating],
+    html5: true
+  });
+  var sound78 = new Howl({
+    src: [gangnamStyle],
+    html5: true
+  });
+  var sound79 = new Howl({
+    src: [macarena],
+    html5: true
+  });
+  var sound80 = new Howl({
+    src: [mamboNumberFive],
+    html5: true
+  });
+  var sound81 = new Howl({
+    src: [iceIceBaby],
+    html5: true
+  });
+  var sound82 = new Howl({
+    src: [tubthumping],
+    html5: true
+  });
+  var sound83 = new Howl({
+    src: [heyYa],
     html5: true
   });
 
@@ -808,5 +935,156 @@ import { Howl } from 'howler';
     album: 'How To Be A Human Being',
     albumArt: seasonTwoEpisodeThreeAlbumArt
   }
+  export const song63 = {
+    mp3: sound63,
+    title: 'Toxic',
+    artist: 'Britney Spears',
+    album: 'In The Zone',
+    albumArt: toxicAlbumArt
+  }
+  export const song64 = {
+    mp3: sound64,
+    title: 'Genie In A Bottle',
+    artist: 'Christina Aguilera',
+    album: 'Genie In A Bottle',
+    albumArt: genieInABottleAlbumArt
+  }
+  export const song65 = {
+    mp3: sound65,
+    title: 'Say My Name',
+    artist: "Destiny's Child",
+    album: "The Writing's On The Wall",
+    albumArt: sayMyNameAlbumArt
+  }
+  export const song66 = {
+    mp3: sound66,
+    title: 'Sexyback',
+    artist: 'Justin Timberlake',
+    album: 'FutureSex/LoveSounds',
+    albumArt: sexybackAlbumArt
+  }
+  export const song67 = {
+    mp3: sound67,
+    title: '7 Rings',
+    artist: 'Ariana Grande',
+    album: 'Thank U, Next',
+    albumArt: sevenRingsAlbumArt
+  }
+  export const song68 = {
+    mp3: sound68,
+    title: 'Bad Romance',
+    artist: 'Lady Gaga',
+    album: 'The Fame',
+    albumArt: badRomanceAlbumArt
+  }
+  export const song69 = {
+    mp3: sound69,
+    title: 'No Scrubs',
+    artist: 'TLC',
+    album: 'FanMail',
+    albumArt: noScrubsAlbumArt
+  }
+  export const song70 = {
+    mp3: sound70,
+    title: 'Girls Just Wanna Have Fun',
+    artist: 'Cyndi Lauper',
+    album: "She's So Unusual",
+    albumArt: girlsJustWannaHaveFunAlbumArt
+  }
+  export const song71 = {
+    mp3: sound71,
+    title: 'Material Girl',
+    artist: 'Madonna',
+    album: 'Like A Virgin',
+    albumArt: materialGirlAlbumArt
+  }
+  export const song72 = {
+    mp3: sound72,
+    title: 'Wannabe',
+    artist: 'Spice Girls',
+    album: 'Spice',
+    albumArt: wannabeAlbumArt
+  }
+  export const song73 = {
+    mp3: sound73,
+    title: 'Dancing Queen',
+    artist: 'ABBA',
+    album: 'ABBA',
+    albumArt: dancingQueenAlbumArt
+  }
+  export const song74 = {
+    mp3: sound74,
+    title: 'Diamonds',
+    artist: 'Rhianna',
+    album: 'Unapologetic',
+    albumArt: diamondsAlbumArt
+  }
+  export const song75 = {
+    mp3: sound75,
+    title: 'Yeah!',
+    artist: 'Usher',
+    album: 'Confessions',
+    albumArt: yeahAlbumArt
+  }
+  export const song76 = {
+    mp3: sound76,
+    title: 'Baby',
+    artist: 'Justin Bieber',
+    album: 'My World',
+    albumArt: babyAlbumArt
+  }
+  export const song77 = {
+    mp3: sound77,
+    title: 'Levitating',
+    artist: 'Dua Lipa',
+    album: 'Future Nostalgia',
+    albumArt: levitatingAlbumArt
+  }
+  export const song78 = {
+    mp3: sound78,
+    title: 'Gangnam Style',
+    artist: 'Psy',
+    album: 'Psy 6, Part 1',
+    albumArt: gangnamStyleAlbumArt
+  }
+  export const song79 = {
+    mp3: sound79,
+    title: 'Macarena',
+    artist: 'Los Del Rio',
+    album: 'A Mí Te Gusta',
+    albumArt: macarenaAlbumArt
+  }
+  export const song80 = {
+    mp3: sound80,
+    title: 'Mambo No. 5',
+    artist: 'Lou Bega',
+    album: 'A Little Bit Of Mambo',
+    albumArt: mamboNoFiveAlbumArt
+  }
+  export const song81 = {
+    mp3: sound81,
+    title: 'Ice Ice Baby',
+    artist: 'Vanilla Ice',
+    album: 'Hooked',
+    albumArt: iceIceBabyAlbumArt
+  }
+  export const song82 = {
+    mp3: sound82,
+    title: 'Tubthumping',
+    artist: 'Chumbawamba',
+    album: 'Tubthumper',
+    albumArt: tubthumpingAlbumArt
+  }
+  export const song83 = {
+    mp3: sound83,
+    title: 'Hey Ya!',
+    artist: 'Outkast',
+    album: 'Speakerboxxx/The Love Below',
+    albumArt: heyYaAlbumArt
+  }
 
-  export const songsArray = [song1, song2, song3, song4, song5, song6, song7, song8, song9, song10, song11, song12, song13, song14, song15, song16, song17, song18, song19, song20, song21, song22, song23, song24, song25, song26, song27, song28, song29, song30, song31, song32, song33, song34, song35, song36, song37, song38, song39, song40, song41, song42, song43, song44, song45, song46, song47, song48, song49, song50, song51, song52, song53, song54, song55, song56, song57, song58, song59, song60, song61, song62];
+  export const songsArray = [song1, song2, song3, song4, song5, song6, song7, song8, song9, song10, song11, song12, song13, song14, song15, song16, song17, song18, song19, song20, song21, song22, song23, song24, song25, song26, song27, song28, song29, song30, song31, song32, song33, song34, song35, song36, song37, song38, song39, song40, song41, song42, song43, song44, song45, song46, song47, song48, song49, song50, song51, song52, song53, song54, song55, song56, song57, song58, song59, song60, song61, song62, song63, song64, song65, song66, song67, song68, song69, song70, song71, song72, song73, song74, song75, song76, song77, song78, song79, song80, song81, song82, song83];
+
+  export const popSongsArray = [song2, song6, song10, song12, song19, song26, song35, song40, song42, song47, song50, song51, song52, song57, song58, song63, song64, song65, song66, song67, song68, song69, song70, song71, song72, song73, song74, song75, song76, song77, song78, song79, song80, song81, song82, song83];
+
+  export const rockSongsArray = [song1, song3, song4, song5, song7, song8, song9, song11, song13, song14, song15, song20, song21, song22, song23, song27, song28, song30, song31, song32, song37, song38, song43, song44, song45, song48, song49, song53, song54, song56, song59, song60];

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, Radio, Tooltip, ConfigProvider, Tabs, Textfield, Tag} from 'antd';
 import axios from 'axios';
 import {
-  InfoCircleOutlined, LeftCircleOutlined, FilterOutlined
+  InfoCircleOutlined, CloseCircleOutlined, FilterOutlined
 } from '@ant-design/icons';
 import correct from '../public/icons/smile2.svg';
 import partial from '../public/icons/neutral.svg';
@@ -44,7 +44,10 @@ const Leaderboard = (props) => {
   const goToMainMenu = (e) => {
     e.preventDefault();
     props.setLeaderboardVisible(false);
+    props.setGameOver(false);
+
     props.setMainMenuVisible(true);
+
   }
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -143,12 +146,37 @@ const Leaderboard = (props) => {
     height: '50px'
   }));
 
+  const formatTime = (time) => {
+    //console.log('LEADERBOARD TIME: ', time);
+    const avgMin = () => {
+      if (time < 60) {
+        return '00';
+      }
+
+      if (time >= 60) {
+        const minPerSong = Math.floor(time/60);
+        if (minPerSong < 10) {
+          return `0${minPerSong}`
+        }
+
+        if (minPerSong >= 10) {
+          return minPerSong
+        }
+      }
+    }
+
+    const avgSec = (Math.floor(time%60) < 10 ? `0${Math.floor(time%60)}` : Math.floor(time%60));
+    const avgString = `${avgMin()}:${avgSec}`
+
+    return (avgString === 'undefined:NaN' ? time : avgString);
+  };
+
   return (
     <div style={{backgroundColor: '#001528', height: '867px', width: '1157px', padding: '5px', borderRadius: '10px', border: '1px solid #fafafa'}}>
       <div style={{border: 'dashed #1776ff 3px', height: '855px', width: '1145px', padding: '5px', borderRadius: '10px'}}>
         <div style={{display: 'inline-flex', justifyContent: 'space-between', width: '100%', padding: '10px'}}>
           <Button style={{fontSize: '40px', backgroundColor: '#001528', borderRadius: '50%', height: '50px', width: '50px'}} onClick={(e) => {goToMainMenu(e)}}>
-            <LeftCircleOutlined style={{fontSize: '50px', color: '#fafafa', borderRadius: '50%', height: '50px', width: '50px', marginLeft: '-15px', marginTop: '-5px'}}/>
+            <CloseCircleOutlined style={{fontSize: '50px', color: '#fafafa', borderRadius: '50%', height: '50px', width: '50px', marginLeft: '-15px', marginTop: '-5px'}}/>
           </Button>
           <Tooltip title="How to Play" placement='right' color='red' key='red'>
             <InfoCircleOutlined style={{fontSize: '50px', color: '#fafafa'}}/>
@@ -191,8 +219,8 @@ const Leaderboard = (props) => {
               <StyledTableCell align="center" style={{fontSize: 32}}>{row.correct}</StyledTableCell>
               <StyledTableCell align="center" style={{fontSize: 32}}>{row.partiallyCorrect}</StyledTableCell>
               <StyledTableCell align="center" style={{fontSize: 32}}>{row.incorrect}</StyledTableCell>
-              <StyledTableCell align="center" style={{color: '1776ff'}}>{row.time}</StyledTableCell>
-              <StyledTableCell align="center" style={{borderRight: '3px solid #fafafa', paddingLeft: '48px', paddingRight: '31px'}}>{row.avg}</StyledTableCell>
+              <StyledTableCell align="center" style={{color: '1776ff'}}>{formatTime(row.time)}</StyledTableCell>
+              <StyledTableCell align="center" style={{borderRight: '3px solid #fafafa', paddingLeft: '48px', paddingRight: '31px'}}>{formatTime(row.avg)}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

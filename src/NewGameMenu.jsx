@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  InfoCircleOutlined, LeftCircleOutlined
+  InfoCircleOutlined, CloseCircleOutlined
 } from '@ant-design/icons';
 import { Button, Radio, Tooltip, Input, Slider } from 'antd';
 import whiteFlower1 from '../public/icons/whiteFlower1.svg';
@@ -14,7 +14,6 @@ import incorrectRightHalf from '../public/icons/incorrectRightHalf.svg';
 import musicalNote1 from '../public/icons/musicalNote1.svg';
 import musicalNote2 from '../public/icons/musicalNote2.svg';
 
-
 const NewGameMenu = (props) => {
   const [nameInput, setNameInput] = useState('');
   const [difficultyInput, setDifficultyInput] = useState('Easy');
@@ -23,7 +22,7 @@ const NewGameMenu = (props) => {
 
   const submitCurrentSettings = (e) => {
     props.setCurrentGameSettings({
-      name: nameInput,
+      name: nameInput || 'Anonymous',
       difficulty: difficultyInput,
       genre: genreInput,
       songNum: songNumInput
@@ -39,16 +38,22 @@ const NewGameMenu = (props) => {
     props.setMainMenuVisible(true);
   }
 
+  const goToTutorial = (e) => {
+    props.setNewGameMenuVisible(false);
+    props.showTutorial(e);
+  }
+
   return (
     <div style={{backgroundColor: '#001528', height: '867px', width: '1157px', padding: '5px', borderRadius: '10px', border: '1px solid #fafafa'}}>
     <div style={{border: 'dashed #1776ff 3px', height: '855px', width: '1145px', padding: '5px', borderRadius: '10px'}}>
     <div style={{display: 'inline-flex', justifyContent: 'space-between', width: '100%', padding: '10px'}}>
           <Button style={{fontSize: '40px', backgroundColor: '#001528', borderRadius: '50%', height: '50px', width: '50px'}} onClick={(e) => {goToMainMenu(e)}}>
-            <LeftCircleOutlined style={{fontSize: '50px', color: '#fafafa', borderRadius: '50%', height: '50px', width: '50px', marginLeft: '-15px', marginTop: '-5px'}}/>
+            <CloseCircleOutlined style={{fontSize: '50px', color: '#fafafa', borderRadius: '50%', height: '50px', width: '50px', marginLeft: '-15px', marginTop: '-5px'}}/>
           </Button>
-          <Tooltip title="How to Play" placement='right' color='red' key='red'>
-            <InfoCircleOutlined style={{fontSize: '50px', color: '#fafafa'}}/>
-          </Tooltip>
+          <Button style={{fontSize: '40px', backgroundColor: '#001528', borderRadius: '50%', height: '50px', width: '50px'}} onClick={(e) => {goToTutorial(e)}}>
+            <InfoCircleOutlined style={{fontSize: '50px', color: '#fafafa', borderRadius: '50%', height: '50px', width: '50px', marginLeft: '-15px', marginTop: '-5px'}}/>
+          </Button>
+
         </div>
       <div style={{height: '476px', width: '676px', paddingTop: '5px', borderRadius: '10px', marginTop: '-145px'}}>
         <div style={{fontSize: '125px', color: '#1776ff', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginTop: '85px', marginLeft: '435px'}}>
