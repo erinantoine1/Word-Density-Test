@@ -1,29 +1,13 @@
 const express = require('express');
-const { save, getAllByGenreDifficultySongNum } = require('../database/index.js');
 const app = express();
 const path = require('path');
+const cors = require('cors');
+const routes = require('./routes');
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
 app.use(express.json());
-
-app.post("/scores", (req, res) => {
-  console.log(req.body);
-  save(req.body).then((response)=> {
-    res.sendStatus(201);
-  });
-});
-
-app.get("/scores", (req, res) => {
-  const genreValue = req.query.genreValue;
-  const difficultyValue = req.query.difficultyValue;
-  const songNumValue = req.query.songNumValue;
-
-  getAllByGenreDifficultySongNum(genreValue, difficultyValue, songNumValue)
-  .then((data) => {
-   // console.log(data);
-    res.send(data)
-    })
-})
+app.use(cors());
+app.use('/', routes);
 
 app.listen(3000, (err) => {
   if (err) {
