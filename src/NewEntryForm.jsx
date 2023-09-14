@@ -33,38 +33,29 @@ const NewEntryForm = (props) => {
       return url;
     };
 
-    let formattedURL = normalizeURL(props.urlInput);
+    var formattedURL = normalizeURL(props.urlInput);
+
+    const newUrlObj = {
+      webpage_url: formattedURL,
+      notes: props.notesInput,
+    };
 
     axios
-      .get(formattedURL)
+      .post('/webpages', newUrlObj)
       .then((response) => {
-        if (response.status === 200) {
-          const newUrlObj = {
-            webpage_url: formattedURL,
-            notes: props.notesInput,
-          };
+        const urlId = response.data.insertedId;
 
-          axios
-            .post('/webpages', newUrlObj)
-            .then((response) => {
-              const urlId = response.data.insertedId;
+        runTest(formattedURL, urlId, setParsedText, (updatedTestReport) => {
+          props.setTestReport(updatedTestReport);
+        });
 
-              runTest(formattedURL, urlId, setParsedText, (updatedTestReport) => {
-                props.setTestReport(updatedTestReport);
-              });
-
-              axios.get('/webpages')
-                .then((response) => {
-                  props.setData(response.data);
-                });
-            });
-        } else {
-          console.error('URL is not reachable:', formattedURL);
-        }
-    })
-    .catch((error) => {
-      console.error('Error checking URL accessibility:', error);
-    });
+        axios.get('/webpages')
+          .then((response) => {
+              props.setData(response.data);
+          });
+      }).catch((error) => {
+        console.error('Error checking URL accessibility:', error);
+      });
   };
 
 

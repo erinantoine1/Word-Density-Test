@@ -43623,149 +43623,6 @@ var dt = "__sc-".concat(f, "__");
 
 /***/ }),
 
-/***/ "./node_modules/valid-url/index.js":
-/*!*****************************************!*\
-  !*** ./node_modules/valid-url/index.js ***!
-  \*****************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-/* module decorator */ module = __webpack_require__.nmd(module);
-(function (module) {
-  'use strict';
-
-  module.exports.is_uri = is_iri;
-  module.exports.is_http_uri = is_http_iri;
-  module.exports.is_https_uri = is_https_iri;
-  module.exports.is_web_uri = is_web_iri;
-  // Create aliases
-  module.exports.isUri = is_iri;
-  module.exports.isHttpUri = is_http_iri;
-  module.exports.isHttpsUri = is_https_iri;
-  module.exports.isWebUri = is_web_iri;
-
-  // private function
-  // internal URI spitter method - direct from RFC 3986
-  var splitUri = function splitUri(uri) {
-    var splitted = uri.match(/(?:([^:\/?#]+):)?(?:\/\/([^\/?#]*))?([^?#]*)(?:\?([^#]*))?(?:#(.*))?/);
-    return splitted;
-  };
-  function is_iri(value) {
-    if (!value) {
-      return;
-    }
-
-    // check for illegal characters
-    if (/[^a-z0-9\:\/\?\#\[\]\@\!\$\&\'\(\)\*\+\,\;\=\.\-\_\~\%]/i.test(value)) return;
-
-    // check for hex escapes that aren't complete
-    if (/%[^0-9a-f]/i.test(value)) return;
-    if (/%[0-9a-f](:?[^0-9a-f]|$)/i.test(value)) return;
-    var splitted = [];
-    var scheme = '';
-    var authority = '';
-    var path = '';
-    var query = '';
-    var fragment = '';
-    var out = '';
-
-    // from RFC 3986
-    splitted = splitUri(value);
-    scheme = splitted[1];
-    authority = splitted[2];
-    path = splitted[3];
-    query = splitted[4];
-    fragment = splitted[5];
-
-    // scheme and path are required, though the path can be empty
-    if (!(scheme && scheme.length && path.length >= 0)) return;
-
-    // if authority is present, the path must be empty or begin with a /
-    if (authority && authority.length) {
-      if (!(path.length === 0 || /^\//.test(path))) return;
-    } else {
-      // if authority is not present, the path must not start with //
-      if (/^\/\//.test(path)) return;
-    }
-
-    // scheme must begin with a letter, then consist of letters, digits, +, ., or -
-    if (!/^[a-z][a-z0-9\+\-\.]*$/.test(scheme.toLowerCase())) return;
-
-    // re-assemble the URL per section 5.3 in RFC 3986
-    out += scheme + ':';
-    if (authority && authority.length) {
-      out += '//' + authority;
-    }
-    out += path;
-    if (query && query.length) {
-      out += '?' + query;
-    }
-    if (fragment && fragment.length) {
-      out += '#' + fragment;
-    }
-    return out;
-  }
-  function is_http_iri(value, allowHttps) {
-    if (!is_iri(value)) {
-      return;
-    }
-    var splitted = [];
-    var scheme = '';
-    var authority = '';
-    var path = '';
-    var port = '';
-    var query = '';
-    var fragment = '';
-    var out = '';
-
-    // from RFC 3986
-    splitted = splitUri(value);
-    scheme = splitted[1];
-    authority = splitted[2];
-    path = splitted[3];
-    query = splitted[4];
-    fragment = splitted[5];
-    if (!scheme) return;
-    if (allowHttps) {
-      if (scheme.toLowerCase() != 'https') return;
-    } else {
-      if (scheme.toLowerCase() != 'http') return;
-    }
-
-    // fully-qualified URIs must have an authority section that is
-    // a valid host
-    if (!authority) {
-      return;
-    }
-
-    // enable port component
-    if (/:(\d+)$/.test(authority)) {
-      port = authority.match(/:(\d+)$/)[0];
-      authority = authority.replace(/:\d+$/, '');
-    }
-    out += scheme + ':';
-    out += '//' + authority;
-    if (port) {
-      out += port;
-    }
-    out += path;
-    if (query && query.length) {
-      out += '?' + query;
-    }
-    if (fragment && fragment.length) {
-      out += '#' + fragment;
-    }
-    return out;
-  }
-  function is_https_iri(value) {
-    return is_http_iri(value, true);
-  }
-  function is_web_iri(value) {
-    return is_http_iri(value) || is_https_iri(value);
-  }
-})(module);
-
-/***/ }),
-
 /***/ "./src/AllEntries.jsx":
 /*!****************************!*\
   !*** ./src/AllEntries.jsx ***!
@@ -44077,7 +43934,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var validUrl = __webpack_require__(/*! valid-url */ "./node_modules/valid-url/index.js");
 var NewEntryForm = function NewEntryForm(props) {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
     _useState2 = _slicedToArray(_useState, 2),
@@ -44094,54 +43950,32 @@ var NewEntryForm = function NewEntryForm(props) {
       return;
     }
     var normalizeURL = function normalizeURL(url) {
-      // Remove leading and trailing whitespace
       url = url.trim();
-
-      // Check if the URL has a protocol (http:// or https://), and add it if missing
       if (!/^(https?:\/\/)/i.test(url)) {
-        url = 'https://' + url; // Always use HTTPS
+        url = 'https://' + url;
       }
-
-      // Ensure that "www." is present after the protocol, but only if it's not already "www."
       if (!url.includes('www.') && !url.startsWith('https://www.')) {
         url = url.replace(/(https:\/\/)/i, '$1www.');
       }
-
-      // if (!validUrl.isWebUri(url)) {
-      //   console.error('Invalid URL:', formattedURL);
-      //   return;
-      // }
-
       return url;
     };
     var formattedURL = normalizeURL(props.urlInput);
-    axios__WEBPACK_IMPORTED_MODULE_3__["default"].get(formattedURL).then(function (response) {
-      // Check the response status code
-      if (response.status === 200) {
-        // Proceed with the rest of the code
-        var newUrlObj = {
-          webpage_url: formattedURL,
-          notes: props.notesInput
-        };
-        axios__WEBPACK_IMPORTED_MODULE_3__["default"].post('/webpages', newUrlObj).then(function (response) {
-          var urlId = response.data.insertedId;
-          (0,_runTest__WEBPACK_IMPORTED_MODULE_1__.runTest)(formattedURL, urlId, setParsedText, function (updatedTestReport) {
-            props.setTestReport(updatedTestReport);
-          });
-          axios__WEBPACK_IMPORTED_MODULE_3__["default"].get('/webpages').then(function (response) {
-            props.setData(response.data);
-          });
-        });
-      } else {
-        console.error('URL is not reachable:', formattedURL);
-        // Handle the case where the URL is not reachable (e.g., display an error message)
-      }
+    var newUrlObj = {
+      webpage_url: formattedURL,
+      notes: props.notesInput
+    };
+    axios__WEBPACK_IMPORTED_MODULE_3__["default"].post('/webpages', newUrlObj).then(function (response) {
+      var urlId = response.data.insertedId;
+      (0,_runTest__WEBPACK_IMPORTED_MODULE_1__.runTest)(formattedURL, urlId, setParsedText, function (updatedTestReport) {
+        props.setTestReport(updatedTestReport);
+      });
+      axios__WEBPACK_IMPORTED_MODULE_3__["default"].get('/webpages').then(function (response) {
+        props.setData(response.data);
+      });
     })["catch"](function (error) {
       console.error('Error checking URL accessibility:', error);
-      // Handle any errors that occur while checking the URL
     });
   };
-
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, props.formVisible ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_styles__WEBPACK_IMPORTED_MODULE_2__.NewEntryElements, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
     value: props.urlInput,
@@ -44382,7 +44216,7 @@ var CustomTooltip = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].di
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var cheerio = __webpack_require__(/*! cheerio */ "./node_modules/cheerio/lib/index.js");
-var commonWords = ['i', 'me', 'my', 'we', 'us', 'our', 'ours', 'you', 'your', 'yours', 'he', 'him', 'his', 'she', 'her', 'hers', 'it', 'its', 'they', 'them', 'their', 'theirs', 'what', 'which', 'who', 'whom', 'this', 'that', 'these', 'those', 'am', 'is', 'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 'having', 'do', 'does', 'did', 'doing', 'a', 'an', 'the', 'and', 'but', 'if', 'or', 'because', 'as', 'until', 'while', 'of', 'at', 'by', 'for', 'with', 'about', 'between', 'into', 'through', 'during', 'before', 'after', 'above', 'below', 'to', 'from', 'up', 'down', 'in', 'out', 'on', 'off', 'over', 'under', 'again', 'further', 'then', 'once', 'here', 'there', 'when', 'where', 'why', 'how', 'all', 'any', 'both', 'each', 'few', 'more', 'most', 'other', 'some', 'such', 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 'than', 'too', 'very', 's', 't', 'can', 'will', 'just', 'don', 'should', 'now', 'id', 'footer', 'com', 'https', 'en', 'fieldtype', 'true', 'false', 'www', 'png', 'jpg', 'api', 'html', 'head', 'body', 'div', 'span', 'p', 'a', 'img', 'br', 'hr', 'ul', 'ol', 'li', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'table', 'tr', 'th', 'td', 'form', 'input', 'button', 'select', 'option', 'textarea', 'label', 'iframe', 'javascript', 'js', 'html', 'css', 'php', 'python', 'java', 'c', 'cplusplus', 'sql', 'ruby', 'perl', 'swift', 'go', 'typescript', 'react', 'vue', 'angular', 'jquery', 'nodejs', 'express', 'rails', 'django', 'laravel', 'function', 'variable', 'class', 'method', 'property', 'object', 'array', 'element', 'attribute', 'event', 'callback', 'query', 'selector', 'stylesheet', 'syntax', 'error', 'debug', 'console', 'log', 'import', 'export', 'html', 'css', 'js', 'php', 'py', 'java', 'cpp', 'sql', 'rb', 'perl', 'swift', 'go', 'ts', 'web', 'website', 'webpage', 'url', 'http', 'https', 'www', 'domain', 'server', 'client', 'browser', 'ajax', 'api', 'img', 'btn', 'src', 'alt', 'href', 'url', 'div', 'js', 'css', 'html', 'id', 'class', 'nbsp', 'lt', 'gt', 'amp', 'quot', 'apos', 'modals', 'get', 'like'];
+var commonWords = ['i', 'me', 'my', 'we', 'us', 'our', 'ours', 'you', 'your', 'yours', 'he', 'him', 'his', 'she', 'her', 'hers', 'it', 'its', 'they', 'them', 'their', 'theirs', 'what', 'which', 'who', 'whom', 'this', 'that', 'these', 'those', 'am', 'is', 'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 'having', 'do', 'does', 'did', 'doing', 'a', 'an', 'the', 'and', 'but', 'if', 'or', 'because', 'as', 'until', 'while', 'of', 'at', 'by', 'for', 'with', 'about', 'between', 'into', 'through', 'during', 'before', 'after', 'above', 'below', 'to', 'from', 'up', 'down', 'in', 'out', 'on', 'off', 'over', 'under', 'again', 'further', 'then', 'once', 'here', 'there', 'when', 'where', 'why', 'how', 'all', 'any', 'both', 'each', 'few', 'more', 'most', 'other', 'some', 'such', 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 'than', 'too', 'very', 's', 't', 'can', 'will', 'just', 'don', 'should', 'now', 'id', 'footer', 'com', 'https', 'en', 'fieldtype', 'true', 'false', 'www', 'png', 'jpg', 'api', 'html', 'head', 'body', 'div', 'span', 'p', 'a', 'img', 'br', 'hr', 'ul', 'ol', 'li', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'table', 'tr', 'th', 'td', 'form', 'input', 'button', 'select', 'option', 'textarea', 'label', 'iframe', 'javascript', 'js', 'html', 'css', 'php', 'python', 'java', 'c', 'cplusplus', 'sql', 'ruby', 'perl', 'swift', 'go', 'typescript', 'react', 'vue', 'angular', 'jquery', 'nodejs', 'express', 'rails', 'django', 'laravel', 'function', 'variable', 'class', 'method', 'property', 'object', 'array', 'element', 'attribute', 'event', 'callback', 'query', 'selector', 'stylesheet', 'syntax', 'error', 'debug', 'console', 'log', 'import', 'export', 'html', 'css', 'js', 'php', 'py', 'java', 'cpp', 'sql', 'rb', 'perl', 'swift', 'go', 'ts', 'web', 'website', 'webpage', 'url', 'http', 'https', 'www', 'domain', 'server', 'client', 'browser', 'ajax', 'api', 'img', 'btn', 'src', 'alt', 'href', 'url', 'div', 'js', 'css', 'html', 'id', 'class', 'nbsp', 'lt', 'gt', 'amp', 'quot', 'apos', 'modals', 'get', 'like', 'var', 'googletag', 'window', 'icon', 'cmd', 'return', 'env', 'require', 'interoprequiredefault', 'void', 'formatenvvars', 'length', 'default', 'arguments', 'typeof', 'feedback', 'px', 'navigation', 'primary', 'zlogonav', 'sticky', 'nav', 'margin', 'width', 'zflyout', 'logo', 'border', 'height', 'top', 'font', 'color', 'container', 'script', 'solid'];
 function calculateWordDensity(htmlContent) {
   var $ = cheerio.load(htmlContent);
   $('body *').contents().filter(function () {

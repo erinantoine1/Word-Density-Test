@@ -19,7 +19,8 @@ const commonWords = ([
   'html', 'css', 'js', 'php', 'py', 'java', 'cpp', 'sql', 'rb', 'perl', 'swift', 'go', 'ts',
   'web', 'website', 'webpage', 'url', 'http', 'https', 'www', 'domain', 'server', 'client', 'browser', 'ajax', 'api',
   'img', 'btn', 'src', 'alt', 'href', 'url', 'div', 'js', 'css', 'html', 'id', 'class',
-  'nbsp', 'lt', 'gt', 'amp', 'quot', 'apos', 'modals', 'get', 'like'
+  'nbsp', 'lt', 'gt', 'amp', 'quot', 'apos', 'modals', 'get', 'like', 'var', 'googletag', 'window', 'icon', 'cmd', 'return', 'env', 'require', 'interoprequiredefault', 'void', 'formatenvvars', 'length', 'default', 'arguments', 'typeof', 'feedback',
+  'px', 'navigation', 'primary', 'zlogonav', 'sticky', 'nav', 'margin', 'width', 'zflyout', 'logo', 'border', 'height', 'top', 'font', 'color', 'container', 'script', 'solid'
 ]);
 
 function calculateWordDensity(htmlContent) {
